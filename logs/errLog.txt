@@ -12,3 +12,4 @@
 20250527	05:41:42	4ac5782e-c9f7-4f41-bbf2-f9682e6de242	ReferenceError: __dirname is not defined
 20250527	06:35:48	93ad0a73-be59-4d33-959e-9f57a4e38923	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\root\new-page.html'
 20250527	06:35:55	02e73f4f-d643-48ad-900d-b0f6abcda015	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\root\new-page.html'
+20250527	13:00:05	5ae1da03-5b7d-4214-ba66-be4e190bd97a	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\404.html'
