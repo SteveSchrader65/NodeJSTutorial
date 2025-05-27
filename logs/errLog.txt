@@ -13,3 +13,25 @@
 20250527	06:35:48	93ad0a73-be59-4d33-959e-9f57a4e38923	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\root\new-page.html'
 20250527	06:35:55	02e73f4f-d643-48ad-900d-b0f6abcda015	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\root\new-page.html'
 20250527	13:00:05	5ae1da03-5b7d-4214-ba66-be4e190bd97a	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\404.html'
+20250527	17:46:55	1fe64c0a-4a66-492f-87f7-6c82b69d76cb	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\routes\views\root\404.html'
+20250527	17:46:57	fee510cb-32fc-413a-bc31-95a78b6aac39	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\routes\views\root\404.html'
+20250527	17:47:44	e03aaeb3-e891-42eb-bdb8-c4731b92a576	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\routes\views\404.html'
+ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'fsP is not definedThe "path" argument must be of type string or an instance of Buffer or URL. Received undefinedThe "path" argument must be of type string or an instance of Buffer or URL. Received function join"undefined" is not valid JSON20250527	20:12:32	5166f325-5553-4466-9342-95d28b08e9a6	ReferenceError: employees is not defined
+20250527	20:12:35	5ccd65a5-3fa6-4910-9f44-91fe7067f935	ReferenceError: employees is not defined
+20250527	20:13:41	9b482e98-c4c5-464b-9d18-8962fd4f3102	ReferenceError: employees is not defined
+20250527	20:13:43	6dfe7144-6bfa-45ba-98b0-a64ec0430e38	ReferenceError: employees is not defined
+20250527	20:13:44	cd234ead-cb5f-459f-b968-a3e5b837aec1	ReferenceError: employees is not defined
+20250527	20:14:47	14a6fb8a-cd9f-439d-a008-552c293ce446	ReferenceError: employees is not defined
+20250527	20:15:58	a2d5a4d2-eca1-4dfe-8b8c-2310270b15ef	ReferenceError: employees is not defined
+20250527	20:17:49	820d9553-5d7b-4928-9d50-01d0bbc69cc2	ReferenceError: employees is not defined
+20250527	20:17:50	ea49f45f-1e06-46a6-8d0f-015f64861e80	ReferenceError: employees is not defined
+20250527	20:18:01	fb250edb-2751-4c0b-92a3-aa23cb83f691	ReferenceError: employees is not defined
+20250527	20:21:48	7a6f8050-9d7c-4178-8404-9150d3293d3e	ReferenceError: employees is not defined
+20250527	20:29:20	298a0637-fc17-4eb9-a330-c07fcfec33dc	TypeError: res.json(...).put is not a function
+20250527	20:32:15	86a0c141-6014-42a5-bab5-cc4173be8eb0	SyntaxError: Expected double-quoted property name in JSON at position 10 (line 1 column 11)
+20250527	20:32:33	c093b42f-0ced-4df9-907c-303fc5df00a2	TypeError: res.json(...).put is not a function
+20250527	20:33:26	1e004776-a7dc-4203-8031-e99ea7993997	TypeError: res.json(...).put is not a function
+20250527	20:36:24	94fca403-287a-448a-8cf0-9944a7dc3dc8	TypeError: res.json(...).put is not a function
+20250527	20:36:29	1cd7cadb-b18d-41d8-b6bf-2701be0a7d7c	TypeError: res.json(...).put is not a function
+20250527	20:37:04	4c8efcbe-c75b-4946-9aea-dec7e3850eb7	TypeError: res.json(...).put is not a function
+20250527	21:07:47	5a0fade7-a4be-40a4-a9cf-143acf1d1913	404 Error: Employee with ID 17 not found20250527	21:08:26	8edc2abd-9e4c-4e58-8041-df7ee8836072	404 Error: Employee with ID 17 not found20250527	21:11:37	cf24a32d-1b9c-46e5-b763-113ab8b80747	404 Error: Employee with ID 17 not found20250527	21:15:23	21e23042-17a1-403a-aad1-de77d157f250	404 Error: Employee with ID 17 not found20250527	21:17:13	512dfb62-b9d4-4658-8756-6e538e887d59	404 Error: Employee with ID 17 not found
