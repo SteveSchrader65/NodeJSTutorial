@@ -34,14 +34,12 @@ app.use(express.json())
 
 // Serve static files
 app.use(express.static(path.join(__dirname, '/public')))
-app.use('/root', express.static(path.join(__dirname, '/public')))
 app.use('/subdir', express.static(path.join(__dirname, '/public')))
 
-// Serve /subdir files
-app.use('/root', rootRouter)
+// Serve HTML files
+app.use('/', rootRouter)
 app.use('/subdir', subDirRouter)
 
-// End-points
 app.get(/hello(\.html)?$/, (req, res, next) => {
   console.log("Attempted to load hello.html")
   next()
