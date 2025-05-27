@@ -465,3 +465,8 @@
 20250527	13:01:25	e666f33a-9e55-4adc-a139-ff7cd00a8200	GET	undefined	/subdir/test.html
 20250527	13:01:30	f18ebd96-5c9f-47a6-b509-44935611d615	GET	undefined	/subdir/testes.html
 20250527	13:01:30	5ea14626-20f8-4926-b097-dfcacaf4c30d	GET	undefined	/subdir/css/style.css
+20250527	17:38:23	6d9d2a5d-4770-4f77-b98f-e8f7f093034c	GET	undefined	/testes.html
+20250527	17:38:23	e3eee922-6b3e-4bc8-9c26-785b98c9a91b	GET	undefined	/css/style.css
+20250527	17:38:33	333e84ae-4e2c-4161-a025-bfd50568bd8b	GET	undefined	/new-page.html
+20250527	17:38:33	46c5e16a-4cad-4874-ba4a-d66ed91b47a3	GET	undefined	/img/img1.jpg
+20250527	17:38:33	6914e387-22a2-4695-adbd-f8b9d8b033af	GET	undefined	/css/style.css
