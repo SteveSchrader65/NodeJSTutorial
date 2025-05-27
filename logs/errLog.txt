@@ -1,0 +1,14 @@
+20250526	19:55:58	a7b30462-e138-4fec-94da-ea34a1bef7f6	Error: CORS: Not permitted
+20250526	19:55:58	01d9bb29-0c15-4bd5-8370-f9338ceeb8de	Error: CORS: Not permitted
+20250526	19:55:58	c97e6a4b-b68f-49c2-82c1-8f6a711f17e3	Error: CORS: Not permitted
+20250526	19:55:58	e9a037e0-2adc-49d1-82ce-b579e2723e04	Error: CORS: Not permitted
+20250527	05:39:09	4ea9544e-f805-43ba-90cf-6f93cc710754	ReferenceError: __dirname is not defined
+20250527	05:39:24	080abc0a-13c1-4a81-818b-295068116de9	ReferenceError: __dirname is not defined
+20250527	05:39:38	6683bf54-db4a-4b85-8d1c-924c21c22ba2	ReferenceError: __dirname is not defined
+20250527	05:39:53	f9e8e0ce-e324-41af-8dbe-6d764e9fff90	ReferenceError: __dirname is not defined
+20250527	05:40:06	57ba5055-8648-4052-a1af-3fdd2a066517	ReferenceError: __dirname is not defined
+20250527	05:41:34	31b2e6d8-6962-45c4-b82f-90ba5e461086	ReferenceError: __dirname is not defined
+20250527	05:41:34	ed8cc424-c599-442b-8b55-f6fa6bf6a422	ReferenceError: __dirname is not defined
+20250527	05:41:42	4ac5782e-c9f7-4f41-bbf2-f9682e6de242	ReferenceError: __dirname is not defined
+20250527	06:35:48	93ad0a73-be59-4d33-959e-9f57a4e38923	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\root\new-page.html'
+20250527	06:35:55	02e73f4f-d643-48ad-900d-b0f6abcda015	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\08Tut\views\root\new-page.html'
