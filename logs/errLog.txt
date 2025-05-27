@@ -34,4 +34,11 @@ ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT
 20250527	20:36:24	94fca403-287a-448a-8cf0-9944a7dc3dc8	TypeError: res.json(...).put is not a function
 20250527	20:36:29	1cd7cadb-b18d-41d8-b6bf-2701be0a7d7c	TypeError: res.json(...).put is not a function
 20250527	20:37:04	4c8efcbe-c75b-4946-9aea-dec7e3850eb7	TypeError: res.json(...).put is not a function
-20250527	21:07:47	5a0fade7-a4be-40a4-a9cf-143acf1d1913	404 Error: Employee with ID 17 not found20250527	21:08:26	8edc2abd-9e4c-4e58-8041-df7ee8836072	404 Error: Employee with ID 17 not found20250527	21:11:37	cf24a32d-1b9c-46e5-b763-113ab8b80747	404 Error: Employee with ID 17 not found20250527	21:15:23	21e23042-17a1-403a-aad1-de77d157f250	404 Error: Employee with ID 17 not found20250527	21:17:13	512dfb62-b9d4-4658-8756-6e538e887d59	404 Error: Employee with ID 17 not found
+20250527	21:07:47	5a0fade7-a4be-40a4-a9cf-143acf1d1913	404 Error: Employee with ID 17 not found20250527	21:08:26	8edc2abd-9e4c-4e58-8041-df7ee8836072	404 Error: Employee with ID 17 not found20250527	21:11:37	cf24a32d-1b9c-46e5-b763-113ab8b80747	404 Error: Employee with ID 17 not found20250527	21:15:23	21e23042-17a1-403a-aad1-de77d157f250	404 Error: Employee with ID 17 not found20250527	21:17:13	512dfb62-b9d4-4658-8756-6e538e887d59	404 Error: Employee with ID 17 not found20250527	23:19:46	8c929578-e722-401c-9086-a11eeceb1861	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\09Tut\views\root\index.html'
+20250527	23:19:48	b48d2dbf-bfd5-4d54-95d1-30b44c001f07	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\09Tut\views\root\index.html'
+20250527	23:21:36	6bc3efaa-fc20-4154-8664-6caf06f3df47	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\09Tut\views\root\index.html'
+20250527	23:24:02	d036125f-6d91-408e-9860-438fcb1383ba	404 Error: Employee with ID 21 not found20250527	23:37:33	38b35d9f-f103-4d08-b020-0b7c195cd12b	Error: ENOENT: no such file or directory, stat 'D:\Exercises\NodeJS\09Tut\routes\views\404.html'
+20250528	00:05:31	8f2887f4-13ec-4af8-ade3-bf512cfb0c61	404 Error: Employee with ID 5 not found20250528	07:21:27	22b7392e-9115-45ce-b7ce-99a9809c48f5	ReferenceError: readEmpDataFile is not defined
+20250528	07:29:05	997c2a20-a2e0-4906-a5ba-e9206622031f	TypeError: employees.find is not a function
+20250528	07:29:06	8e990224-ec90-4e82-a47e-def758b8cc07	TypeError: employees.find is not a function
+20250528	07:34:24	03a216ef-183e-4371-a8a7-6a5e14668cec	TypeError: employees.find is not a function
