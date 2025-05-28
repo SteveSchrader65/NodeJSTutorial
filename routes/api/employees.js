@@ -6,10 +6,9 @@ const empRouter = express.Router()
 empRouter.route("/")
   .get(getAllEmployees)
   .post(addNewEmployee)
+
+empRouter.route("/:id")
+  .get(getEmployeeByID)
   .put(updateEmployee)
   .delete(deleteEmployee)
-
-empRouter.route('/:id')
-  .get(getEmployeeByID)
-
 export { empRouter }

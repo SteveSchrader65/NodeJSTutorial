@@ -3,15 +3,17 @@ import fs, { promises as fsPromises } from 'fs'
 import { getDirname } from '../config/dirname.js'
 import { logEvents } from '../middleware/logEvents.js'
 
+// Update and delete functions not working in Thunder Client
+
 // ES modules equivalent of __dirname
 const __dirname = getDirname(import.meta.url)
 
 async function readEmpDataFile() {
   try {
-    const fileContent = await fsPromises.readFile(path.join(__dirname, "..", "model", "employees.json"), "utf8")
-    const empData = JSON.parse(fileContent)
+    const empData = await fsPromises.readFile(path.join(__dirname, "..", "model", "employees.json"), "utf8")
+    const employees = JSON.parse(empData)
 
-    return empData
+    return employees
   } catch (err) {
     await logEvents(`Error reading employee data: ${err.message}`, "errLog.txt")
     return []
@@ -40,7 +42,7 @@ const getAllEmployees = async (req, res) => {
   }}
 
 const addNewEmployee = async (req, res) => {
-  const employees = await getAllEmployees()
+  const employees = await readEmpDataFile()
   const newEmployee = {
     id: employees.length ? employees[employees.length - 1].id + 1 : 1,
     firstName: req.body.firstName,
@@ -54,40 +56,46 @@ const addNewEmployee = async (req, res) => {
   const updated = [...employees, newEmployee]
 
   await writeEmpDataFile(updated)
-  res.status(201).json(updated)
+  res.status(201).json(newEmployee)
 }
 
 const updateEmployee = async (req, res) => {
-  const employees = await getAllEmployees()
-  const employee = employees.find(emp => emp.id === parseInt(req.body.id))
+  try{
+    const employees = await readEmpDataFile()
+    const employee = employees.find(emp => emp.id === parseInt(req.body.id))
 
-  if (!employee) {
-    return res.status(400).json({'message': `Emp ID ${req.body.id} not found`})
+    if (!employee) {
+      return res.status(400).json({'message': `Emp ID ${req.body.id} not found`})
+    }
+
+    if (req.body.firstName) employee.firstName = req.body.firstName
+    if (req.body.lastName) employee.lastName = req.body.lastName
+
+    const filtered = employees.filter(emp => emp.id !== parseInt(req.body.id))
+    const updated = [...filtered, employee].sort((a,b) => a.id - b.id)
+
+    await writeEmpDataFile(updated)
+    res.json(updated)
+  } catch (err) {
+    await logEvents(`Error updating employee: ${err.message}`, "errLog.txt")
+    res.status(500).json({message: "Server error updating employee"})
   }
-
-  if (req.body.firstName) employee.firstName = req.body.firstName
-  if (req.body.lastName) employee.lastName = req.body.lastName
-
-  const filtered = employees.filter(emp => emp.id !== parseInt(req.body.id))
-  const updated = [...filtered, employee].sort((a,b) => a.id - b.id)
-
-  await writeEmpDataFile(updated)
-  res.json(updated)
 }
 
 const deleteEmployee = async (req, res) => {
   try {
     const employees = await readEmpDataFile()
-    const filtered = employees.filter(emp => emp.id !== parseInt(req.body.id))
+    const employee = employees.find((emp) => emp.id === parseInt(req.params.id))
+    const filtered = employees.filter(emp => emp.id !== parseInt(req.params.id))
 
     if (filtered.length === employees.length) {
-      return res.status(400).json({message: `Emp ID ${req.body.id} not found`})
+      return res.status(400).json({message: `Emp ID ${req.params.id} not found`})
     }
 
     await writeEmpDataFile(filtered)
-    res.json(filtered)
+    res.json(employee)
   } catch (err) {
-    await logEvents(`Error deleting Employee #${req.body.id}: ${err.message}`, "errLog.txt")
+    await logEvents(`Error deleting Employee #${req.params.id}: ${err.message}`, "errLog.txt")
     res.status(500).json({message: "Server error deleting employee"})
   }
 }
