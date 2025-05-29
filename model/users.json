@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "user": "Walter",
+    "pwd": "$2b$10$l42f5sG1gjFQyLMhyfPUOO.mY0vyb1ttA2NMvlz.jnTCmZPGoU66i"
+  },
+  {
+    "id": 2,
+    "user": "Chuck",
+    "pwd": "$2b$10$itXB01TijMI3ugPj43hilOwVRREOdq8jnPejtzlyv89O6.TZbNUna"
+  }
+]

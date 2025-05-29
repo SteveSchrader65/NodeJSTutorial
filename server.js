@@ -1,12 +1,13 @@
 import express from 'express'
 import path from 'path'
 import cors from 'cors'
-import {corsOptions} from "./config/corsOptions.js"
 import {getDirname} from "./config/dirname.js"
+import {corsOptions} from "./config/corsOptions.js"
 import {logger} from "./middleware/logEvents.js"
-import {errorHandler} from "./middleware/errorHandler.js"
-import {empRouter} from "./routes/api/employees.js"
 import {rootRouter} from "./routes/root.js"
+import {empRouter} from "./routes/api/employees.js"
+import {regRouter} from "./routes/register.js"
+import {errorHandler} from "./middleware/errorHandler.js"
 
 const PORT = process.env.PORT || 3500
 const app = express()
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, "/public")))
 // Routes
 app.use("/", rootRouter)
 app.use("/employees", empRouter)
+app.use("/register", regRouter)
 
 // 404 Page
 app.all(/.*/, (req, res) => {
