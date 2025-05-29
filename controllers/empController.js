@@ -1,7 +1,7 @@
 import path from "path"
 import fs, {promises as fsPromises} from "fs"
 import {getDirname} from "../config/dirname.js"
-import {logEvents} from "../middleware/logEvents.js"
+import {errorHandler} from "../middleware/errorHandler.js"
 
 // ES modules equivalent of __dirname
 const __dirname = getDirname(import.meta.url)
@@ -16,7 +16,7 @@ async function readEmpDataFile() {
 
     return employees
   } catch (err) {
-    await logEvents(`Error reading employee data: ${err.message}`, "errLog.txt")
+    errorHandler(`Error reading employee data: ${err.message}`)
     return []
   }
 }
@@ -28,7 +28,7 @@ async function writeEmpDataFile(data) {
       JSON.stringify(data, null, 2)
     )
   } catch (err) {
-    await logEvents(`Error writing employee data: ${err.message}`, "errLog.txt")
+    errorHandler(`Error writing employee data: ${err.message}`)
   }
 }
 
@@ -38,7 +38,7 @@ const getAllEmployees = async (req, res) => {
 
     res.json(employees)
   } catch (err) {
-    await logEvents(`Error retrieving employee data: ${err.message}`, "errLog.txt")
+    errorHandler(`Error retrieving employee data: ${err.message}`)
     res.status(500).json({message: "Server error retrieving employees"})
   }
 }
@@ -79,7 +79,7 @@ const updateEmployee = async (req, res) => {
     await writeEmpDataFile(updated)
     res.json(updated)
   } catch (err) {
-    await logEvents(`Error updating employee: ${err.message}`, "errLog.txt")
+    errorHandler(`Error updating employee: ${err.message}`)
     res.status(500).json({message: "Server error updating employee"})
   }
 }
@@ -97,7 +97,7 @@ const deleteEmployee = async (req, res) => {
     await writeEmpDataFile(filtered)
     res.json(employee)
   } catch (err) {
-    await logEvents(`Error deleting Employee #${req.params.id}: ${err.message}`, "errLog.txt")
+    errorHandler(`Error deleting Employee #${req.params.id}: ${err.message}`)
     res.status(500).json({message: "Server error deleting employee"})
   }
 }
@@ -113,6 +113,7 @@ const getEmployeeByID = async (req, res) => {
 
     res.json(employee)
   } catch (err) {
+    errorHandler(`Error retrieving Employee #${req.params.id}: ${err.message}`)
     res.status(500).json({message: "Server error retrieving employee"})
   }
 }

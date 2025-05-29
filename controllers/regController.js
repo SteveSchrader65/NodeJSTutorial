@@ -2,7 +2,8 @@ import path from 'path'
 import fs, { promises as fsPromises } from 'fs'
 import { getDirname } from '../config/dirname.js'
 import { logEvents } from '../middleware/logEvents.js'
-import bcrypt from 'bcryptjs'
+import {errorHandler} from "../middleware/errorHandler.js"
+import bcrypt from "bcryptjs"
 
 // ES modules equivalent of __dirname
 const __dirname = getDirname(import.meta.url)
@@ -18,7 +19,7 @@ async function readUserDataFile() {
 
     return users
   } catch (err) {
-    await logEvents(`Error reading user data: ${err.message}`, "errLog.txt")
+    errorHandler(`Error reading user data: ${err.message}`)
     return []
   }
 }
@@ -30,7 +31,7 @@ async function writeUserDataFile(data) {
       JSON.stringify(data, null, 2)
     )
   } catch (err) {
-    await logEvents(`Error writing user data: ${err.message}`, "errLog.txt")
+    errorHandler(`Error writing user data: ${err.message}`)
   }
 }
 
