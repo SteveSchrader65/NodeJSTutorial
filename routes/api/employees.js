@@ -3,11 +3,11 @@ import { getAllEmployees, addNewEmployee, updateEmployee, deleteEmployee, getEmp
 
 const empRouter = express.Router()
 
-empRouter.route("/")
+empRouter.route('/')
   .get(getAllEmployees)
   .post(addNewEmployee)
 
-empRouter.route("/:id")
+empRouter.route('/:id')
   .get(getEmployeeByID)
   .put(updateEmployee)
   .delete(deleteEmployee)

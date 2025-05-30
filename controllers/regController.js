@@ -2,19 +2,15 @@ import path from 'path'
 import fs, { promises as fsPromises } from 'fs'
 import { getDirname } from '../config/dirname.js'
 import { logEvents } from '../middleware/logEvents.js'
-import {errorHandler} from "../middleware/errorHandler.js"
-import bcrypt from "bcryptjs"
+import {errorHandler} from '../middleware/errorHandler.js'
+import bcrypt from 'bcryptjs'
 
 // ES modules equivalent of __dirname
 const __dirname = getDirname(import.meta.url)
 
 async function readUserDataFile() {
   try {
-    const userData = await fsPromises.readFile(
-      path.join(__dirname, "..", "model", "users.json"),
-      "utf8"
-    )
-
+    const userData = await fsPromises.readFile(path.join(__dirname, '..', 'model', 'users.json'), 'utf8')
     const users = JSON.parse(userData)
 
     return users
@@ -27,7 +23,7 @@ async function readUserDataFile() {
 async function writeUserDataFile(data) {
   try {
     await fsPromises.writeFile(
-      path.join(__dirname, "..", "model", "users.json"),
+      path.join(__dirname, '..', 'model', 'users.json'),
       JSON.stringify(data, null, 2)
     )
   } catch (err) {
@@ -39,7 +35,7 @@ const handleNewUser = async (req, res) => {
   const {user, pwd} = req.body
   const users = await readUserDataFile()
 
-  if (!user || !pwd) return res.status(400).json({message: "Username and password are required"})
+  if (!user || !pwd) return res.status(400).json({message: 'Username and password are required'})
 
   const duplicate = users.find((person) => person.username === user)
 
@@ -62,11 +58,11 @@ const handleNewUser = async (req, res) => {
       user: newUser
     })
 
-    await logEvents(`New User created: ${user}`, "userLog.txt")
+    await logEvents(`New User created: ${user}`, 'userLog.txt')
   } catch (err) {
     res.status(500).json({message: err.message})
-    await logEvents(`Error creating new User: ${err.message}`, "userLog.txt")
-    await logEvents(`Error creating new User: ${err.message}`, "errLog.txt")
+    await logEvents(`Error creating new User: ${err.message}`, 'userLog.txt')
+    await logEvents(`Error creating new User: ${err.message}`, 'errLog.txt')
   }
 }
 

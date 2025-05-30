@@ -1,7 +1,7 @@
-import path from "path"
-import fs, {promises as fsPromises} from "fs"
-import {getDirname} from "../config/dirname.js"
-import {errorHandler} from "../middleware/errorHandler.js"
+import path from 'path'
+import fs, {promises as fsPromises} from 'fs'
+import {getDirname} from '../config/dirname.js'
+import {errorHandler} from '../middleware/errorHandler.js'
 
 // ES modules equivalent of __dirname
 const __dirname = getDirname(import.meta.url)
@@ -9,8 +9,8 @@ const __dirname = getDirname(import.meta.url)
 async function readEmpDataFile() {
   try {
     const empData = await fsPromises.readFile(
-      path.join(__dirname, "..", "model", "employees.json"),
-      "utf8"
+      path.join(__dirname, '..', 'model', 'employees.json'),
+      'utf8'
     )
     const employees = JSON.parse(empData)
 
@@ -24,7 +24,7 @@ async function readEmpDataFile() {
 async function writeEmpDataFile(data) {
   try {
     await fsPromises.writeFile(
-      path.join(__dirname, "..", "model", "employees.json"),
+      path.join(__dirname, '..', 'model', 'employees.json'),
       JSON.stringify(data, null, 2)
     )
   } catch (err) {
@@ -39,7 +39,7 @@ const getAllEmployees = async (req, res) => {
     res.json(employees)
   } catch (err) {
     errorHandler(`Error retrieving employee data: ${err.message}`)
-    res.status(500).json({message: "Server error retrieving employees"})
+    res.status(500).json({message: 'Server error retrieving employees'})
   }
 }
 
@@ -52,7 +52,7 @@ const addNewEmployee = async (req, res) => {
   }
 
   if (!newEmployee.firstName || !newEmployee.lastName) {
-    return res.status(400).json({message: "First and last names are reequired"})
+    return res.status(400).json({message: 'First and last names are reequired'})
   }
 
   const updated = [...employees, newEmployee]
@@ -80,7 +80,7 @@ const updateEmployee = async (req, res) => {
     res.json(updated)
   } catch (err) {
     errorHandler(`Error updating employee: ${err.message}`)
-    res.status(500).json({message: "Server error updating employee"})
+    res.status(500).json({message: 'Server error updating employee'})
   }
 }
 
@@ -95,10 +95,11 @@ const deleteEmployee = async (req, res) => {
     }
 
     await writeEmpDataFile(filtered)
+    // Add message to empLog
     res.json(employee)
   } catch (err) {
     errorHandler(`Error deleting Employee #${req.params.id}: ${err.message}`)
-    res.status(500).json({message: "Server error deleting employee"})
+    res.status(500).json({message: 'Server error deleting employee'})
   }
 }
 
@@ -114,7 +115,7 @@ const getEmployeeByID = async (req, res) => {
     res.json(employee)
   } catch (err) {
     errorHandler(`Error retrieving Employee #${req.params.id}: ${err.message}`)
-    res.status(500).json({message: "Server error retrieving employee"})
+    res.status(500).json({message: 'Server error retrieving employee'})
   }
 }
 
