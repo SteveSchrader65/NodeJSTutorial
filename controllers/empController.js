@@ -2,6 +2,7 @@ import path from 'path'
 import fs, {promises as fsPromises} from 'fs'
 import {getDirname} from '../config/dirname.js'
 import {errorHandler} from '../middleware/errorHandler.js'
+import { logEvents } from '../middleware/logEvents.js'
 
 // ES modules equivalent of __dirname
 const __dirname = getDirname(import.meta.url)
@@ -39,7 +40,7 @@ const getAllEmployees = async (req, res) => {
     res.json(employees)
   } catch (err) {
     errorHandler(`Error retrieving employee data: ${err.message}`)
-    res.status(500).json({message: 'Server error retrieving employees'})
+    res.status(500).json({success: false, message: 'Server error retrieving employee data'})
   }
 }
 
@@ -52,13 +53,17 @@ const addNewEmployee = async (req, res) => {
   }
 
   if (!newEmployee.firstName || !newEmployee.lastName) {
-    return res.status(400).json({message: 'First and last names are reequired'})
+    return res.status(400).json({success: false, message: 'First and last names are required'})
   }
 
   const updated = [...employees, newEmployee]
 
   await writeEmpDataFile(updated)
-  res.status(201).json(newEmployee)
+  await logEvents(
+		`New Employee created: ${newEmployee.firstName} ${newEmployee.lastName}`,
+		'empLog.txt'
+  )
+  res.status(201).json({success: true, message: `New employee ${newEmployee.firstName} ${newEmployee.lastName} created`, data: newEmployee})
 }
 
 const updateEmployee = async (req, res) => {
@@ -67,7 +72,7 @@ const updateEmployee = async (req, res) => {
     const employee = employees.find((emp) => emp.id === parseInt(req.body.id))
 
     if (!employee) {
-      return res.status(400).json({message: `Emp ID ${req.body.id} not found`})
+      return res.status(400).json({success: false, message: `Emp ID ${req.body.id} not found`})
     }
 
     if (req.body.firstName) employee.firstName = req.body.firstName
@@ -77,10 +82,12 @@ const updateEmployee = async (req, res) => {
     const updated = [...filtered, employee].sort((a, b) => a.id - b.id)
 
     await writeEmpDataFile(updated)
-    res.json(updated)
-  } catch (err) {
+    await logEvents(`Employee ${employee.firstName} ${employee.lastName} updated`, 'empLog.txt')
+    res.status(200).json({success: true, message: `Employee ${employee.firstName} ${employee.lastName} updated`, data: updated,
+	})
+} catch (err) {
     errorHandler(`Error updating employee: ${err.message}`)
-    res.status(500).json({message: 'Server error updating employee'})
+    res.status(500).json({success: false, message: 'Server error updating employee'})
   }
 }
 
@@ -91,15 +98,18 @@ const deleteEmployee = async (req, res) => {
     const filtered = employees.filter((emp) => emp.id !== parseInt(req.params.id))
 
     if (filtered.length === employees.length) {
-      return res.status(400).json({message: `Emp ID ${req.params.id} not found`})
+      return res.status(400).json({success: false, message: `Emp ID ${req.params.id} not found`})
     }
 
     await writeEmpDataFile(filtered)
-    // Add message to empLog
-    res.json(employee)
+    await logEvents(`Employee ${employee.firstName} ${employee.lastName} deleted`, 'empLog.txt')
+    res.status(200).json({
+		success: true,
+		message: `Employee ${employee.firstName} ${employee.lastName} deleted`
+	})
   } catch (err) {
     errorHandler(`Error deleting Employee #${req.params.id}: ${err.message}`)
-    res.status(500).json({message: 'Server error deleting employee'})
+    res.status(500).json({success: false, message: 'Server error deleting employee'})
   }
 }
 
@@ -109,13 +119,13 @@ const getEmployeeByID = async (req, res) => {
     const employee = employees.find((emp) => emp.id === parseInt(req.params.id))
 
     if (!employee) {
-      return res.status(404).json({message: `Emp ID ${req.params.id} not found`})
+      return res.status(404).json({success: false, message: `Emp ID ${req.params.id} not found`})
     }
 
     res.json(employee)
   } catch (err) {
     errorHandler(`Error retrieving Employee #${req.params.id}: ${err.message}`)
-    res.status(500).json({message: 'Server error retrieving employee'})
+    res.status(500).json({success: false, message: 'Server error retrieving employee'})
   }
 }
 

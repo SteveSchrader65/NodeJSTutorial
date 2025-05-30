@@ -10,11 +10,7 @@ const __dirname = getDirname(import.meta.url)
 
 async function readUserDataFile() {
   try {
-    const userData = await fsPromises.readFile(
-      path.join(__dirname, '..', 'model', 'users.json'),
-      'utf8'
-    )
-
+    const userData = await fsPromises.readFile(path.join(__dirname, '..', 'model', 'users.json'), 'utf8')
     const users = JSON.parse(userData)
 
     return users
@@ -39,18 +35,18 @@ const handleLogin = async (req, res) => {
   const users = await readUserDataFile()
   const {user, pwd} = req.body
 
-  if (!user || !pwd) return res.status(400).json({message: 'Username and password are required'})
+  if (!user || !pwd) return res.status(400).json({success: false, message: 'Username and password are required'})
 
   const userMatch = users.find((person) => person.username === user)
 
-  if (userMatch) return res.sendStatus(401)
+  if (!userMatch) return res.sendStatus(401)
 
   try {
     const pwdMatch = await bcrypt.compare(pwd, userMatch.password)
 
     if (pwdMatch) {
       // Create JWT here
-      res.json({'Success': `User ${user} has logged-in`})
+      res.json({success: true, message: `User ${user} has logged-in`})
       await logEvents(`User ${user} has logged-in`, 'userLog.txt')
     }
   } catch (err) {

@@ -5,3 +5,17 @@
 20250530	02:42:08	679446d1-c241-4456-8de0-abdd417ca3cd	Logging: POST	undefined	/employees
 20250530	02:42:26	2df28243-c050-4192-8dfa-d92302918140	Logging: DELETE	undefined	/employees/7
 20250530	02:42:36	52dba287-e358-4db5-a1fc-2cb14911e3e8	Logging: PUT	undefined	/employees/1
+20250530	09:33:53	f7bc0b95-6612-4d2e-a424-fd4ae4070ae5	Logging: POST	undefined	/auth
+20250530	09:34:45	27aee4de-2b73-446a-aed2-b045676a609e	Logging: POST	undefined	/auth
+20250530	09:36:00	4466b2f3-9726-4db0-8ab1-d583460c4ffe	Logging: POST	undefined	/auth
+20250530	09:36:01	27482a7a-b0f6-4a33-9da3-8abc00e6f5a8	Logging: POST	undefined	/auth
+20250530	09:36:02	5566f3e5-ef35-4b57-a87b-84a910c94c62	Logging: POST	undefined	/auth
+20250530	09:36:02	9810a24b-bb6f-463a-9e07-7283847a6ad4	Logging: POST	undefined	/auth
+20250530	09:36:02	185dd0cd-1963-42f1-9158-34cc451c094e	Logging: POST	undefined	/auth
+20250530	09:36:02	622a33ce-8d51-4fe6-8181-5cd7f40ac495	Logging: POST	undefined	/auth
+20250530	09:36:03	63988ba9-80e0-4eb8-a2ab-3071b57d6a7e	Logging: POST	undefined	/auth
+20250530	09:36:03	3a92ee76-cafd-4d02-bbfc-4533544b829a	Logging: POST	undefined	/auth
+20250530	09:36:12	ae6a7981-77ef-445f-b4e2-eb5df691108b	Logging: POST	undefined	/auth
+20250530	09:36:13	23852b7b-f21b-484b-9589-e9cbad9d9140	Logging: POST	undefined	/auth
+20250530	09:36:23	119bf0df-c871-4a9e-8635-205e30a30e24	Logging: POST	undefined	/auth
+20250530	09:36:28	4c201ed0-2408-44d7-a157-927da3b3dcd8	Logging: POST	undefined	/auth

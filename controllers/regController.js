@@ -35,11 +35,11 @@ const handleNewUser = async (req, res) => {
   const {user, pwd} = req.body
   const users = await readUserDataFile()
 
-  if (!user || !pwd) return res.status(400).json({message: 'Username and password are required'})
+  if (!user || !pwd) return res.status(400).json({success: false, message: 'Username and password are required'})
 
-  const duplicate = users.find((person) => person.username === user)
+  const duplicate = users.find((person) => person.user === user)
 
-  if (duplicate) return res.sendStatus(409)
+  if (duplicate) return res.status(409).json({success: false, message: 'Username already exists'})
 
   try {
     const hashed = await bcrypt.hash(pwd, 10)
@@ -54,13 +54,14 @@ const handleNewUser = async (req, res) => {
 
     await writeUserDataFile(updated)
     res.status(201).json({
+      success: true,
       message: `New user ${user} created ...`,
       user: newUser
     })
 
     await logEvents(`New User created: ${user}`, 'userLog.txt')
   } catch (err) {
-    res.status(500).json({message: err.message})
+    res.status(500).json({success: false, message: err.message})
     await logEvents(`Error creating new User: ${err.message}`, 'userLog.txt')
     await logEvents(`Error creating new User: ${err.message}`, 'errLog.txt')
   }
