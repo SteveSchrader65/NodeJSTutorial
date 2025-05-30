@@ -37,21 +37,24 @@ const handleLogin = async (req, res) => {
 
   if (!user || !pwd) return res.status(400).json({success: false, message: 'Username and password are required'})
 
-  const userMatch = users.find((person) => person.username === user)
+  const userMatch = users.find(person => person.user === user)
 
   if (!userMatch) return res.sendStatus(401)
 
   try {
-    const pwdMatch = await bcrypt.compare(pwd, userMatch.password)
+		const hashMatch = await bcrypt.compare(pwd, userMatch.pwd)
 
-    if (pwdMatch) {
-      // Create JWT here
-      res.json({success: true, message: `User ${user} has logged-in`})
-      await logEvents(`User ${user} has logged-in`, 'userLog.txt')
-    }
+		if (hashMatch) {
+			// Create JWT here
+			res.json({ success: true, message: `User ${user} has logged-in` })
+			await logEvents(`User ${user} has logged-in`, 'userLog.txt')
+		} else {
+			res.sendStatus(401)
+			await logEvents(`User ${user} failed to log-in - incorrect password`, 'userLog.txt')
+		}
   } catch (err) {
-    res.sendStatus(401)
-    await logEvents(`User ${user} failed to log-in`, 'userLog.txt')
+		res.sendStatus(401)
+		await logEvents(`User ${user} failed to log-in`, 'userLog.txt')
   }
 }
 

@@ -19,3 +19,14 @@
 20250530	09:36:13	23852b7b-f21b-484b-9589-e9cbad9d9140	Logging: POST	undefined	/auth
 20250530	09:36:23	119bf0df-c871-4a9e-8635-205e30a30e24	Logging: POST	undefined	/auth
 20250530	09:36:28	4c201ed0-2408-44d7-a157-927da3b3dcd8	Logging: POST	undefined	/auth
+20250530	09:51:15	f5cbe066-9e48-42a2-8b32-191e2b688133	Logging: POST	undefined	/register
+20250530	09:52:19	126d8902-3d4b-41c4-b344-ae56534a7e66	Logging: POST	undefined	/auth
+20250530	09:52:22	e722805d-40f5-4f9e-91b5-acf86a393ca4	Logging: POST	undefined	/auth
+20250530	09:52:23	11b7542c-5496-4743-9883-82e811aae7ba	Logging: POST	undefined	/auth
+20250530	09:52:33	fe1fa042-d9fd-4051-bac3-98b6d70c7a51	Logging: POST	undefined	/auth
+20250530	09:58:48	07273fec-84bf-4413-92d9-3617789238b6	Logging: POST	undefined	/register
+20250530	12:10:10	ea00e780-f8e9-4e38-9acb-7e8b72bda130	Logging: POST	undefined	/auth
+20250530	12:11:06	bbb30ee7-c5de-4589-8243-582afd05adfb	Logging: POST	undefined	/register
+20250530	12:11:42	599073b3-ea4f-4506-b83b-8a898fb45fdb	Logging: POST	undefined	/auth
+20250530	12:11:54	8241b41e-b367-4b3b-934b-0aa653bd644c	Logging: POST	undefined	/auth
+20250530	12:16:10	ba66e18b-51cc-4a51-bec4-d0cdd36ac287	Logging: POST	undefined	/auth

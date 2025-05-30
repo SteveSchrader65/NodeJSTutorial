@@ -1,2 +1,8 @@
 20250530	02:39:28	af9fd26d-a3a0-4805-babf-1c918592184f	Logging: New User created: Walter
 20250530	02:39:57	648d27eb-bba3-4037-846e-e8c4bd4addc9	Logging: New User created: Chuck
+20250530	09:51:15	9639b760-a18e-44ff-af6c-6acdc137b934	Logging: New User created: Fred
+20250530	12:10:10	6a50e7cc-3ede-4ea9-bf60-6ff59eb20051	Logging: User Fred failed to log-in - incorrect password
+20250530	12:11:06	e7397f4e-8567-41fb-a712-938620a300af	Logging: New User created: Steve
+20250530	12:11:43	061ab22b-b2f0-4cd0-be6e-1dd12a7c97e4	Logging: User Steve failed to log-in - incorrect password
+20250530	12:11:54	ae665c31-69d2-4a50-9847-545b5c70576b	Logging: User Steve has logged-in
+20250530	12:16:10	2e0f5302-2903-43c7-98ab-1899062162a8	Logging: User Fred has logged-in

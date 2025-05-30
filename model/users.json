@@ -8,5 +8,15 @@
     "id": 2,
     "user": "Chuck",
     "pwd": "$2b$10$itXB01TijMI3ugPj43hilOwVRREOdq8jnPejtzlyv89O6.TZbNUna"
+  },
+  {
+    "id": 3,
+    "user": "Fred",
+    "pwd": "$2b$10$jVfZQ6sxG3RAv.TxQqcINOSPIjFvmR8.N82LTiNploC3uLyfB2IZK"
+  },
+  {
+    "id": 4,
+    "user": "Steve",
+    "pwd": "$2b$10$4Cm5k6EP4xZlsaz1T9eoG.vyXNDKRa31/Vark/7ITgmDX46iF5LaS"
   }
 ]
