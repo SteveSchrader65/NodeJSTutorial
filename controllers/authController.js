@@ -74,7 +74,7 @@ const handleLogin = async (req, res) => {
 				JSON.stringify([...otherUsers, currentUser], null, 2)
 			)
 
-			res.cookie('jwt', refreshToken, { httpOnly: true, maxAge: 86400000 })
+			res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: true, maxAge: 86400000 })
 			res.json({ success: true, message: `User ${user} has logged-in`, data: accessToken })
 			await logEvents(`User ${user} has logged-in`, 'userLog.txt')
 		} else {

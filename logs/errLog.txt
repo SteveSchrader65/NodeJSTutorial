@@ -58,3 +58,20 @@ ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT
 20250530	17:28:59	cdb44523-7fe7-4c2d-bf40-e717a2a49fc3	Logging: TypeError: Cannot read properties of undefined (reading '1')
 20250530	17:28:59	f0ab7f5a-2c4a-4d80-848c-65b3a1f87ac2	Logging: TypeError: Cannot read properties of undefined (reading '1')
 20250530	17:28:59	8fef4fd0-75e7-404b-b82e-05ea2da9a26b	Logging: TypeError: Cannot read properties of undefined (reading '1')
+20250531	11:42:47	eebd864f-cf44-4435-a73f-52f0eb952125	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:50	27f4922c-58ce-46b7-a08e-298eca9b70a0	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:50	ca4a7b0b-4891-4a80-ae6c-756fdddab4ee	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:51	f64832ea-5ea8-4264-88d5-8190a523fdf5	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:51	33603b60-d76c-4519-9f0d-423e3c815157	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:52	e36baf9d-1726-472e-bb30-e115133c4113	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:52	1ba50e7f-4417-416d-96c5-6d13d92bbbf7	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:52	8ddf661c-2c21-4f00-9dd5-4b40296df11f	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:53	5e6a7c9c-a3bf-4ec7-aca5-75e8d4c90c06	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:53	02f76e33-6807-4c86-803f-64c406b71474	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:53	4359ebef-39ec-45ea-9547-4d7b699e2402	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:53	4e8a2e50-224f-43cb-9c98-095431c8de74	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:53	967d1e03-b1fd-4bac-a766-81422445c28e	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:53	c62dc869-7e6f-4676-96bf-10389af4449d	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:54	fa1d651d-0ff0-4718-8ce1-d26595d7f98b	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:54	0849c355-014f-4f86-ab30-357b53c2e60f	Logging: ReferenceError: userMatch is not defined
+20250531	11:42:54	f6898361-1252-44a4-8dd3-ab3799c90ace	Logging: ReferenceError: userMatch is not defined

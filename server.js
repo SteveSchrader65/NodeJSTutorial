@@ -8,8 +8,10 @@ import { empRouter } from './routes/api/employees.js'
 import { refreshRouter } from './routes/refresh.js'
 import { regRouter } from './routes/register.js'
 import { rootRouter } from './routes/root.js'
+import { logoutRouter } from './routes/logout.js'
 import { errorHandler } from './middleware/errorHandler.js'
 import { verifyJWT } from './middleware/verifyJWT.js'
+import { credentials } from './middleware/credentials.js'
 import cookieParser from 'cookie-parser'
 
 const PORT = process.env.PORT || 3500
@@ -20,6 +22,7 @@ const __dirname = import.meta.dirname
 app.use(logger)
 
 // Cross-Origin Resource Sharing
+app.use(credentials)
 app.use(cors(corsOptions))
 
 // Middleware
@@ -36,6 +39,7 @@ app.use('/auth', authRouter)
 app.use('/refresh', refreshRouter)
 app.use('/register', regRouter)
 app.use('/employees', verifyJWT, empRouter)
+app.use('/logout', logoutRouter)
 
 // 404 Page
 app.all(/.*/, (req, res) => {

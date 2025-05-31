@@ -1,16 +1,5 @@
 [
   {
-    "id": 1,
-    "user": "Steve",
-    "pwd": "$2b$10$YaLb6E1UnnL/ZW97ZbYTcu4rZSAjeghDVzedvRetheo.0eawdB3FW"
-  },
-  {
-    "id": 3,
-    "user": "Mark",
-    "pwd": "$2b$10$CZJLpYx9afITpfx7hLfTlOlwuK1zwNJo55doE7DD/7/kaTmHAqZZu",
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiTWFyayIsImlhdCI6MTc0ODY1ODg4NiwiZXhwIjoxNzQ4NzQ1Mjg2fQ.vDrf5q4unP_zXom8GgqJafGSiGEykozbeu3sagPSdyI"
-  },
-  {
     "id": 5,
     "user": "Frank",
     "pwd": "$2b$10$BEc1pJvwgOmuVsaA1UI0u.8szlaUfUpC.7NVzZ/xQunq/B7Lourum",
@@ -26,6 +15,18 @@
     "id": 2,
     "user": "Dave",
     "pwd": "$2b$10$Q72tC8bJNDCuFUXHiNXKaOm3uIkgOPRFkU6ryickf3P0wApfGxK5i",
-    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRGF2ZSIsImlhdCI6MTc0ODY2MDEyMiwiZXhwIjoxNzQ4NzQ2NTIyfQ.PKNC1T6xs07G4GPvAk_LQeivA6n2EHjmqZ-HsRE3Nzg"
+    "refreshToken": ""
+  },
+  {
+    "id": 1,
+    "user": "Steve",
+    "pwd": "$2b$10$YaLb6E1UnnL/ZW97ZbYTcu4rZSAjeghDVzedvRetheo.0eawdB3FW",
+    "refreshToken": ""
+  },
+  {
+    "id": 3,
+    "user": "Mark",
+    "pwd": "$2b$10$CZJLpYx9afITpfx7hLfTlOlwuK1zwNJo55doE7DD/7/kaTmHAqZZu",
+    "refreshToken": ""
   }
 ]

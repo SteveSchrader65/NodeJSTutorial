@@ -21,7 +21,7 @@ async function readUserDataFile() {
 	}
 }
 
-const handleRefreshToken = async (req, res) => {
+const handleRefresh = async (req, res) => {
 	const cookies = req.cookies
 
   if (!cookies?.jwt) return res.sendStatus(401)
@@ -46,4 +46,4 @@ const handleRefreshToken = async (req, res) => {
 	})
 }
 
-export { handleRefreshToken }
+export { handleRefresh }
