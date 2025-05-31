@@ -18,15 +18,15 @@
     "refreshToken": ""
   },
   {
-    "id": 1,
-    "user": "Steve",
-    "pwd": "$2b$10$YaLb6E1UnnL/ZW97ZbYTcu4rZSAjeghDVzedvRetheo.0eawdB3FW",
-    "refreshToken": ""
-  },
-  {
     "id": 3,
     "user": "Mark",
     "pwd": "$2b$10$CZJLpYx9afITpfx7hLfTlOlwuK1zwNJo55doE7DD/7/kaTmHAqZZu",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiTWFyayIsImlhdCI6MTc0ODcxODM3NywiZXhwIjoxNzQ4ODA0Nzc3fQ._-BqsvobyOxI_Oj0L6ajPyaO-lSa-c-WJ7CxIEh4QEI"
+  },
+  {
+    "id": 1,
+    "user": "Steve",
+    "pwd": "$2b$10$YaLb6E1UnnL/ZW97ZbYTcu4rZSAjeghDVzedvRetheo.0eawdB3FW",
     "refreshToken": ""
   }
 ]

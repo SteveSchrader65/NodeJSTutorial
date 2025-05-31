@@ -494,3 +494,97 @@
 20250531	12:01:34	6cdeeb0b-a892-4b15-bb77-31b48762e254	Logging: GET	undefined	/refresh
 20250531	12:01:36	0ef31c29-4f8e-4b88-a509-680c4c373cd9	Logging: GET	undefined	/refresh
 20250531	12:01:38	fcf1fe9c-6299-4d2a-af4f-772f259b7667	Logging: GET	undefined	/refresh
+20250601	02:34:31	2d29eccb-028c-4780-aca4-2d8b6b0fa02e	Logging: POST	undefined	/auth
+20250601	02:34:49	9f21a1e9-2ba3-450c-aa4a-68a114b9b689	Logging: GET	undefined	/logout
+20250601	02:34:49	9ddcf9bc-3cdd-4440-a982-591e4f0583a6	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:34:52	366b37cb-56e2-4dbf-9466-03866f6109ee	Logging: GET	undefined	/logout
+20250601	02:34:52	d3700102-fe63-4f68-8fe3-8d01ca35a1e9	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:34:54	80b30d0f-e8b4-4bbb-a599-8e5240422002	Logging: GET	undefined	/logout
+20250601	02:34:54	161343c6-69b9-4677-a0c2-8b653a0d3d95	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:34:55	c2fa60bc-0013-474b-b421-67ecde966e11	Logging: GET	undefined	/logout
+20250601	02:34:55	6a3de93d-d65b-43db-88f2-03709dc20cd1	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:34:55	608d9c85-6493-44a5-8cc8-6c98ce29de54	Logging: GET	undefined	/logout
+20250601	02:34:55	dd584b49-6256-4fbb-887f-0fe6e56fb476	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:34:56	2a15e13f-a4da-4a44-a94d-1ba698efb78d	Logging: GET	undefined	/logout
+20250601	02:34:56	6910f425-2777-49a5-8f35-05d28b6c4d02	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:40	5747e253-4793-408e-8469-81cc6c408b30	Logging: POST	undefined	/auth
+20250601	02:51:46	7e167992-fe9b-4daa-8809-0c131556223b	Logging: GET	undefined	/logout
+20250601	02:51:46	d09f7dad-51ca-4304-8ff0-f1a7e844eddb	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:49	899f77cb-14d9-4bca-a511-10e2ce6ba8f9	Logging: GET	undefined	/logout
+20250601	02:51:49	abe2977f-bff0-4f62-b292-e9b2e003d7a9	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:51	a9ac50de-7c20-47be-9473-7050e9da25f2	Logging: GET	undefined	/logout
+20250601	02:51:51	62be6629-09b4-42ca-a155-73bb2692a6bb	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:52	eb4f18a7-40a3-4857-8fa3-54c42c1bdfdc	Logging: GET	undefined	/logout
+20250601	02:51:52	e319096c-b738-4745-ab17-1fe2931e45ae	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:53	9c122b89-a67a-4107-b947-39e18596ab71	Logging: GET	undefined	/logout
+20250601	02:51:53	c8df6fa6-b4f1-4397-bca2-0f0ac7c91c66	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:53	ff222d89-f847-4aa2-8733-ff26abaff8c8	Logging: GET	undefined	/logout
+20250601	02:51:53	1567a0cd-6551-4eca-98b8-c8cba176d161	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:53	36a31215-b56a-4289-8b45-18f868030107	Logging: GET	undefined	/logout
+20250601	02:51:53	19d1b0c0-9a56-4a7e-a30c-d102608d0ada	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:53	238bd6c3-a71b-428d-8dee-8231e6b98c0f	Logging: GET	undefined	/logout
+20250601	02:51:53	58f8c5cb-cb7d-4d61-a711-1494fa65fd67	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:54	ded52b93-bfb2-471d-b96b-30d87b540a11	Logging: GET	undefined	/logout
+20250601	02:51:54	26066c06-67da-403c-88e0-c3c8b36bea49	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:54	bcfa71d2-dfde-497f-b509-83caaaa574e5	Logging: GET	undefined	/logout
+20250601	02:51:54	fd66fd47-6f92-44bf-b4d2-c6d2e0030243	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:54	14e6bfa6-e82a-45dd-9b21-698a4fc62d77	Logging: GET	undefined	/logout
+20250601	02:51:54	193807cd-9a3a-4007-8a1b-8d980ec4dd1a	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:55	deaa0349-7dce-4199-bd24-29e2f2bbf2b2	Logging: GET	undefined	/logout
+20250601	02:51:55	2c88ff9b-8ff4-4452-9dd6-b1a77f0d3a56	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:55	d505c0ff-21cf-4b99-b280-770c07650e25	Logging: GET	undefined	/logout
+20250601	02:51:55	54e3a835-82d5-4d1d-bd55-3c05e85c7a10	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:56	c2f42414-58bb-4dcd-b250-ee6e2ac4a9e0	Logging: GET	undefined	/logout
+20250601	02:51:56	1afc3a76-f21c-49d8-afab-d4c50d02805c	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:56	2977d626-ee2a-4d2e-ab17-b37fd514df3c	Logging: GET	undefined	/logout
+20250601	02:51:56	27761831-b2b7-4c7f-b88a-ff965428c746	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:56	dcc82387-ec71-4598-bbdb-4ae2851b5ec8	Logging: GET	undefined	/logout
+20250601	02:51:56	1e386317-27bb-468a-86f9-0fc8c670a5bc	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:56	1b149fc7-9b27-4790-b756-5457ed70750d	Logging: GET	undefined	/logout
+20250601	02:51:56	3e16b140-409c-475b-ac08-e6d14798cdf9	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:57	d20c5ad8-1b80-4a80-bf1c-4908096e7503	Logging: GET	undefined	/logout
+20250601	02:51:57	3b42560f-60f4-4378-96c7-9da967be993c	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:57	c7c82da3-fd0d-4b3d-9ca3-a08657267961	Logging: GET	undefined	/logout
+20250601	02:51:57	8c5abf93-ce63-4ce4-9334-45a2206faa34	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:57	2a5534d8-6321-4297-9a54-29ddf8fdc7bd	Logging: GET	undefined	/logout
+20250601	02:51:57	bebb328b-e035-42f6-8ce2-87c88ff0faf2	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:57	1f1499dd-215b-4e39-b492-85ae90f6e08b	Logging: GET	undefined	/logout
+20250601	02:51:57	2e003b36-81e8-4a5c-9605-d06de3733f02	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	02:51:58	d352cce7-a235-4a5d-aa40-941aec019c3f	Logging: GET	undefined	/logout
+20250601	02:51:58	5674e028-2fdc-4ce0-9e9a-99ef45454d78	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:02:56	3e23c4e1-1556-4d49-8d14-83250e1ad5ab	Logging: POST	undefined	/auth
+20250601	03:03:01	7ce22f0d-1573-4b37-a2d3-d81a670ea4ef	Logging: GET	undefined	/logout
+20250601	03:03:01	8b517fc9-603a-4ab5-82f2-28ca302c7a4f	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:03:11	a23a5e35-46bf-4037-8049-55abe46c2c73	Logging: POST	undefined	/auth
+20250601	03:03:32	5be7d942-5996-491e-ad11-8eb9922158e6	Logging: GET	undefined	/logout
+20250601	03:03:32	076dbbb3-ea1b-4f97-8716-2d85b7f6f8c9	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:03:34	3dd7975b-11ac-45c1-a946-e676244c4b49	Logging: GET	undefined	/logout
+20250601	03:03:34	77a5bb87-973f-4903-839b-a2a46b4a9481	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:03:35	64b86087-66c5-43cf-8686-1797b9c66987	Logging: GET	undefined	/logout
+20250601	03:03:35	d36227b8-b1ae-4b46-85d7-ecc4c2726286	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:03:36	22267d65-1821-4960-9a73-97596b6c3f94	Logging: GET	undefined	/logout
+20250601	03:03:36	eb0296ee-0f38-4715-974d-270523e67840	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:03:38	b54e0f10-2032-4f84-bfdd-91fe1c8ac7b9	Logging: GET	undefined	/logout
+20250601	03:03:38	ad04edd9-3b27-43aa-8942-6d4b07ea3836	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:03:49	3a740f4d-5809-48be-b5ec-bd3f3c776a01	Logging: POST	undefined	/auth
+20250601	03:06:17	1dd2be51-a33f-4367-93e5-aded6b6db40c	Logging: POST	undefined	/auth
+20250601	03:06:25	5d961cfe-edff-41d8-a96f-a0074f5f41d4	Logging: POST	undefined	/auth
+20250601	03:06:31	5383bd41-2ed9-43d3-83c7-aeec3cf5f0e8	Logging: GET	undefined	/logout
+20250601	03:06:31	0357e60b-1e70-460e-9463-70ab25b8b858	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:08:52	2433fda6-8766-4ab1-abd8-ecbd28d5d214	Logging: POST	undefined	/auth
+20250601	03:09:08	d72dad94-a5db-47d7-b449-344678e37b8a	Logging: GET	undefined	/logout
+20250601	03:09:08	0ac37462-cc17-4664-9509-6759cae12500	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:09:09	e9c8d846-36bb-4ce4-a3fb-9b98ae67e0b6	Logging: GET	undefined	/logout
+20250601	03:09:09	561ff7fe-067f-4f91-aa8e-a9914eddfc0b	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:09:43	8926ac22-66f0-4c13-9cc0-7a6ac184ae60	Logging: GET	undefined	/logout
+20250601	03:09:43	811e5850-e160-4b06-927b-3aa1e86c7669	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:09:54	fcb0d268-3b41-4e1f-b363-65dc5cff8bd0	Logging: POST	undefined	/auth
+20250601	03:10:06	dec706a9-433b-4013-838b-96400c3f6016	Logging: GET	undefined	/logout
+20250601	03:10:06	ee835d5f-c33a-4192-a22f-aff5301f08b3	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:10:26	5dcb8893-2710-4f69-ad8b-013cc33fd228	Logging: POST	undefined	/auth
+20250601	03:10:36	0bc531ed-5475-4a8a-b554-a80195eab79d	Logging: GET	undefined	/logout
+20250601	03:10:36	62f53917-1a0e-46e7-b26c-39010d4a163c	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:10:38	af86639a-e62c-451f-9dad-dc930e30b9f5	Logging: GET	undefined	/logout
+20250601	03:10:38	162fe0f4-1274-418d-8a8e-fa0faa19c71d	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
+20250601	03:17:24	eecc8a49-3374-419d-96ee-e67969600569	Logging: POST	undefined	/auth
+20250601	03:17:28	c01972ae-ab7b-4b0b-a06b-6cb858974fc7	Logging: GET	undefined	/logout

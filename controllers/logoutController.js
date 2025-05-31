@@ -1,7 +1,6 @@
 import path from 'path'
 import { promises as fsPromises } from 'fs'
 import { logEvents } from '../middleware/logEvents.js'
-import { errorHandler } from '../middleware/errorHandler.js'
 
 const __dirname = import.meta.dirname
 
@@ -14,8 +13,7 @@ async function readUserDataFile() {
 
 		return JSON.parse(userData)
 	} catch (err) {
-    await logEvents(`Error reading user data: ${err.message}`)
-		return []
+		throw new Error(`Error reading user data: ${err.message}`)
 	}
 }
 
@@ -26,51 +24,50 @@ async function writeUserDataFile(data) {
 			JSON.stringify(data, null, 2)
 		)
 	} catch (err) {
-		errorHandler(`Error writing user data: ${err.message}`)
-    throw err
+		throw new Error(`Error writing user data: ${err.message}`)
 	}
 }
 
 // NOTE: Delete access token on client-side
-const handleLogout = async (req, res) => {
+const handleLogout = async (req, res, next) => {
 	const cookies = req.cookies
   const clientIP = req.ip || req.connection.remoteAddress
 
-	if (!cookies?.jwt) {
-    const message = `Attempted to logout without JWT cookie - IP: ${clientIP}`
+  res.set('Cache-Control', 'no-store, no-cache, must-revalidate, private')
 
-    await logEvents(`${message}`, 'reqLog.txt')
-    return res.status(204).json({success: false, message: message})
+	if (!cookies?.jwt) {
+    const failMessage = `Attempted to logout without JWT cookie - IP: ${clientIP}`
+
+    await logEvents(failMessage, 'reqLog.txt')
+    return res.status(400).json({success: false, message: failMessage})
   }
 
   try {
 		const refreshToken = cookies.jwt
 		const users = await readUserDataFile()
 		const userMatch = users.find(person => person.refreshToken === refreshToken)
+    const isProduction = process.env.NODE_ENV === 'production'
 
-		res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: true })
+		res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: isProduction })
 
 		if (!userMatch) {
-			const message = `Logout attempt with invalid refresh token - IP: ${clientIP}`
+			const failMessage = `Logout attempt with invalid refresh token - IP: ${clientIP}`
 
-			await logEvents(message, 'reqLog.txt')
-			return res.status(204).json({ success: false, message: message })
+			await logEvents(failMessage, 'reqLog.txt')
+			return res.status(400).json({ success: false, message: failMessage })
 		}
 
 		// Delete refreshToken in db
-		const otherUsers = users.filter(person => person.refreshToken != userMatch.refreshToken)
+		const otherUsers = users.filter(person => person.refreshToken !== userMatch.refreshToken)
 		const currentUser = { ...userMatch, refreshToken: '' }
 		const successMessage = `User '${userMatch.user}' logged out successfully - IP: ${clientIP}`
 
 		await writeUserDataFile([...otherUsers, currentUser])
-		await logEvents(`${successMessage}`, 'userLog.txt')
+		await logEvents(successMessage, 'userLog.txt')
 
-		res.status(204).json({success: true, message: successMessage})
+		res.status(200).json({success: true, message: successMessage})
   } catch (err) {
-		const errorMessage = `Logout error: ${err.message} - IP: ${clientIP}`
-
-    await logEvents(`${errorMessage}`, 'errLog.txt')
-		return res.status(500).json({ success: false, message: `Internal server error: ${errorMessage}`})
+    next (err)
   }
 }
 
