@@ -20,7 +20,7 @@ const verifyJWT = (req, res, next) => {
       if (err) return res.sendStatus(403)
 
 		  // Add user log entry to show access granted
-      req.user = decoded.username
+      req.user = decoded.user
       next()
     }
   )

@@ -35,9 +35,7 @@ app.use('/', rootRouter)
 app.use('/auth', authRouter)
 app.use('/refresh', refreshRouter)
 app.use('/register', regRouter)
-
-app.use(verifyJWT)
-app.use('/employees', empRouter)
+app.use('/employees', verifyJWT, empRouter)
 
 // 404 Page
 app.all(/.*/, (req, res) => {

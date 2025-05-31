@@ -52,17 +52,16 @@ const handleLogin = async (req, res) => {
 		const hashMatch = await bcrypt.compare(pwd, userMatch.pwd)
 
 		if (hashMatch) {
-			// Create JWT here
 			dotenv.config()
 
 			const accessToken = jwt.sign(
-				{ username: userMatch.user },
+				{ user: userMatch.user },
 				process.env.ACCESS_TOKEN_SECRET,
-				{ expiresIn: '60s' }
+				{ expiresIn: '30s' }
 			)
 
 			const refreshToken = jwt.sign(
-				{ username: userMatch.user },
+				{ user: userMatch.user },
 				process.env.REFRESH_TOKEN_SECRET,
 				{ expiresIn: '1d' }
 			)
