@@ -588,3 +588,5 @@
 20250601	03:10:38	162fe0f4-1274-418d-8a8e-fa0faa19c71d	Logging: Attempted to logout without JWT cookie - IP: ::ffff:127.0.0.1
 20250601	03:17:24	eecc8a49-3374-419d-96ee-e67969600569	Logging: POST	undefined	/auth
 20250601	03:17:28	c01972ae-ab7b-4b0b-a06b-6cb858974fc7	Logging: GET	undefined	/logout
+20250601	03:21:16	ba8b6983-8b45-42d2-a1dd-260a32f42e8f	Logging: POST	undefined	/auth
+20250601	03:21:25	26494f46-2df2-4258-a517-ec46ece1f629	Logging: GET	undefined	/logout

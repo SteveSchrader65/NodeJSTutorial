@@ -60,7 +60,7 @@ const handleLogout = async (req, res, next) => {
 		// Delete refreshToken in db
 		const otherUsers = users.filter(person => person.refreshToken !== userMatch.refreshToken)
 		const currentUser = { ...userMatch, refreshToken: '' }
-		const successMessage = `User '${userMatch.user}' logged out successfully - IP: ${clientIP}`
+		const successMessage = `User ${userMatch.user} logged out successfully`
 
 		await writeUserDataFile([...otherUsers, currentUser])
 		await logEvents(successMessage, 'userLog.txt')

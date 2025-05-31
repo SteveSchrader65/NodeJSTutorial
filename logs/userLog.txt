@@ -89,3 +89,5 @@
 20250601	03:10:26	04f9cc4b-c81c-4b4c-91ec-a21fdbcefd4d	Logging: User Steve has logged-in
 20250601	03:17:24	9c527c23-39ef-4f35-8cb1-663e69dc18f2	Logging: User Steve has logged-in
 20250601	03:17:28	a3f51d30-ea5d-4670-b7d2-319767c12bcb	Logging: User 'Steve' logged out successfully - IP: ::ffff:127.0.0.1
+20250601	03:21:16	52f4cc16-a439-48dc-8102-eaa976e1ed72	Logging: User Steve has logged-in
+20250601	03:21:25	dade1f15-1783-41fb-9b23-22616469f6f8	Logging: User Steve logged out successfully
