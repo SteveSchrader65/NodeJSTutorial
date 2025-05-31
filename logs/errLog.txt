@@ -46,3 +46,15 @@ ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT
 20250528	10:24:19	454a750c-fb85-492c-932e-e9aae4a540d7	Error deleting Employee #6: Cannot read properties of undefined (reading 'id')20250528	10:24:22	45fdf872-6e25-43e7-b41b-b546d53e215c	Error deleting Employee #6: Cannot read properties of undefined (reading 'id')20250528	10:24:55	5a1c7973-5d47-4391-918b-c2705188cbc6	Error deleting Employee #9: Cannot read properties of undefined (reading 'id')20250529	04:07:24	24e10ddb-8041-434d-ae71-1090cc3e3631	ReferenceError: usersDB is not defined
 20250529	04:09:01	36e39c55-142a-460d-b800-42b1958370f9	Error: Cannot set headers after they are sent to the client
 20250529	04:14:41	6b3d3955-99da-4768-9e80-62588067bc7a	Error: Cannot set headers after they are sent to the client
+20250530	17:26:50	b7b78356-20f5-480b-b846-95f86a150ef3	Logging: TypeError: Cannot read properties of undefined (reading 'split')
+20250530	17:27:51	1e9cf674-f371-448e-9d13-df40e58ede34	Logging: TypeError: Cannot read properties of undefined (reading 'split')
+20250530	17:27:52	a783bfd0-07f0-4784-8a6a-e1b7b143a598	Logging: TypeError: Cannot read properties of undefined (reading 'split')
+20250530	17:27:54	4376be7b-74a7-49cd-b0aa-c7e1d0c1cc21	Logging: TypeError: Cannot read properties of undefined (reading 'split')
+20250530	17:27:55	3b763f91-96ed-4879-92fb-173bf6ccd48c	Logging: TypeError: Cannot read properties of undefined (reading 'split')
+20250530	17:28:56	42353ca2-e851-4aa6-bd3f-9d917836ab20	Logging: TypeError: Cannot read properties of undefined (reading '1')
+20250530	17:28:56	7f8166f2-3dc2-4ce8-a0b1-28338ee4dd7d	Logging: TypeError: Cannot read properties of undefined (reading '1')
+20250530	17:28:57	c7bfeffa-28f6-41dc-a6b1-b38493770c19	Logging: TypeError: Cannot read properties of undefined (reading '1')
+20250530	17:28:58	a11ce3c3-2a04-444f-abeb-e18afdb94ffa	Logging: TypeError: Cannot read properties of undefined (reading '1')
+20250530	17:28:59	cdb44523-7fe7-4c2d-bf40-e717a2a49fc3	Logging: TypeError: Cannot read properties of undefined (reading '1')
+20250530	17:28:59	f0ab7f5a-2c4a-4d80-848c-65b3a1f87ac2	Logging: TypeError: Cannot read properties of undefined (reading '1')
+20250530	17:28:59	8fef4fd0-75e7-404b-b82e-05ea2da9a26b	Logging: TypeError: Cannot read properties of undefined (reading '1')

@@ -12,4 +12,4 @@ empRouter.route('/:id')
   .put(updateEmployee)
   .delete(deleteEmployee)
 
-export {empRouter}
+export { empRouter }

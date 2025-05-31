@@ -5,4 +5,4 @@ const regRouter = express.Router()
 
 regRouter.post('/', handleNewUser)
 
-export {regRouter}
+export { regRouter }

@@ -1,13 +1,11 @@
 import { format } from 'date-fns'
 import { v4 as uuid } from 'uuid'
 import { promises as fsPromises } from 'fs'
-import { fileURLToPath } from 'url'
 import fs from 'fs'
 import path from 'path'
 
 // ES modules equivalent of __dirname
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __dirname = import.meta.dirname
 const logsDir = path.join(__dirname, '..', 'logs')
 
 const logEvents = async (message, logName) => {

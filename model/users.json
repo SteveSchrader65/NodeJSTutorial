@@ -1,22 +1,30 @@
 [
   {
-    "id": 1,
-    "user": "Walter",
-    "pwd": "$2b$10$l42f5sG1gjFQyLMhyfPUOO.mY0vyb1ttA2NMvlz.jnTCmZPGoU66i"
-  },
-  {
-    "id": 2,
-    "user": "Chuck",
-    "pwd": "$2b$10$itXB01TijMI3ugPj43hilOwVRREOdq8jnPejtzlyv89O6.TZbNUna"
-  },
-  {
     "id": 3,
-    "user": "Fred",
-    "pwd": "$2b$10$jVfZQ6sxG3RAv.TxQqcINOSPIjFvmR8.N82LTiNploC3uLyfB2IZK"
+    "user": "Mark",
+    "pwd": "$2b$10$CZJLpYx9afITpfx7hLfTlOlwuK1zwNJo55doE7DD/7/kaTmHAqZZu"
   },
   {
     "id": 4,
+    "user": "Jason",
+    "pwd": "$2b$10$1Fll3XyCfqyteedZ4p0VMOCVZzhXmhr9ucYxOZ0ulQLgxeqfj5An.",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikphc29uIiwiaWF0IjoxNzQ4NjQ4NTAwLCJleHAiOjE3NDg3MzQ5MDB9.jS2sFo5wLOoWwisIHMjsqC4HG6boZZGAPdqbGnOGep4"
+  },
+  {
+    "id": 2,
+    "user": "Dave",
+    "pwd": "$2b$10$Q72tC8bJNDCuFUXHiNXKaOm3uIkgOPRFkU6ryickf3P0wApfGxK5i",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkRhdmUiLCJpYXQiOjE3NDg2NDg4NzgsImV4cCI6MTc0ODczNTI3OH0.26z6RyYsku_p4WcrUc6EC4xftZyWTgsPIBJiuaaNgdM"
+  },
+  {
+    "id": 3,
+    "user": "Frank",
+    "pwd": "$2b$10$BEc1pJvwgOmuVsaA1UI0u.8szlaUfUpC.7NVzZ/xQunq/B7Lourum"
+  },
+  {
+    "id": 1,
     "user": "Steve",
-    "pwd": "$2b$10$4Cm5k6EP4xZlsaz1T9eoG.vyXNDKRa31/Vark/7ITgmDX46iF5LaS"
+    "pwd": "$2b$10$YaLb6E1UnnL/ZW97ZbYTcu4rZSAjeghDVzedvRetheo.0eawdB3FW",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN0ZXZlIiwiaWF0IjoxNzQ4NjU0NTgwLCJleHAiOjE3NDg3NDA5ODB9.wQdRVMbaMSw0JWoCNzcg7k8Kuv4GtWzR0jHuIYawIu0"
   }
 ]

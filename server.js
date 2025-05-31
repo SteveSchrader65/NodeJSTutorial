@@ -1,18 +1,20 @@
 import express from 'express'
 import path from 'path'
 import cors from 'cors'
-import {corsOptions} from "./config/corsOptions.js"
-import {getDirname} from "./config/dirname.js"
-import {logger} from "./middleware/logEvents.js"
-import {authRouter} from "./routes/auth.js"
-import {empRouter} from "./routes/api/employees.js"
-import {regRouter} from "./routes/register.js"
-import {rootRouter} from "./routes/root.js"
-import {errorHandler} from "./middleware/errorHandler.js"
+import { corsOptions } from './config/corsOptions.js'
+import { logger } from './middleware/logEvents.js'
+import { authRouter } from './routes/auth.js'
+import { empRouter } from './routes/api/employees.js'
+import { refreshRouter } from './routes/refresh.js'
+import { regRouter } from './routes/register.js'
+import { rootRouter } from './routes/root.js'
+import { errorHandler } from './middleware/errorHandler.js'
+import { verifyJWT } from './middleware/verifyJWT.js'
+import cookieParser from 'cookie-parser'
 
 const PORT = process.env.PORT || 3500
 const app = express()
-const __dirname = getDirname(import.meta.url)
+const __dirname = import.meta.dirname
 
 // Custom logger
 app.use(logger)
@@ -23,6 +25,7 @@ app.use(cors(corsOptions))
 // Middleware
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
+app.use(cookieParser())
 
 // Serve static files
 app.use(express.static(path.join(__dirname, "/public")))
@@ -30,8 +33,11 @@ app.use(express.static(path.join(__dirname, "/public")))
 // Routes
 app.use('/', rootRouter)
 app.use('/auth', authRouter)
-app.use('/employees', empRouter)
+app.use('/refresh', refreshRouter)
 app.use('/register', regRouter)
+
+app.use(verifyJWT)
+app.use('/employees', empRouter)
 
 // 404 Page
 app.all(/.*/, (req, res) => {
