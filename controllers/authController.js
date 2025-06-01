@@ -1,5 +1,5 @@
 import path from 'path'
-import fs, { promises as fsPromises } from 'fs'
+import { promises as fsPromises } from 'fs'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
@@ -49,14 +49,14 @@ const handleLogin = async (req, res) => {
 
 			const otherUsers = users.filter(person => person.user != userMatch.user)
 			const currentUser = { ...userMatch, refreshToken }
-      const isProduction = process.env.NODE_ENV === 'production'
+      // const isProduction = process.env.NODE_ENV === 'production'
 
 			await fsPromises.writeFile(
 				path.join(__dirname, '..', 'model', 'users.json'),
 				JSON.stringify([...otherUsers, currentUser], null, 2)
 			)
 
-			res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', secure: isProduction, maxAge: 86400000 })
+			res.cookie('jwt', refreshToken, { httpOnly: true, sameSite: 'None', /*secure: true,*/ /*secure: isProduction,*/ maxAge: 86400000 })
 			res.json({ success: true, message: `User ${user} has logged-in`, data: accessToken })
 			await logEvents(`User ${user} has logged-in`, 'userLog.txt')
 		} else {

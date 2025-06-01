@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
 
-const verifyJWT = (req, res, next) => {
+const verifyJWT = async (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization
   const token = authHeader?.split(' ')[1]
 
@@ -13,15 +13,22 @@ const verifyJWT = (req, res, next) => {
     token,
     process.env.ACCESS_TOKEN_SECRET,
     (err, decoded) => {
-	  	// Add user log entry to show access denied
-      if (err) return res.sendStatus(403)
+      if (err) {
+        logEvents(`Access denied: ${user}`, 'userLog.txt')
 
-		  // Add user log entry to show access granted
+        return res.sendStatus(403).json({ success: false, message: `Access denied: ${user}` })
+      }
+
       req.user = decoded.UserInfo.user
       req.roles = decoded.UserInfo.roles
+      logEvents(`Access granted: ${user}`, 'userLog.txt')
+      res.sendStatus(200).json({ success: true, message: `Access granted: ${user}` })
       next()
     }
   )
 }
 
 export { verifyJWT }
+
+// !! These are all wrong throughout app !!
+// errorHandler(`Error retrieving employee data: ${err.message}`)

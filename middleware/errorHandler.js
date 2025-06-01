@@ -1,6 +1,6 @@
 import { logEvents } from './logEvents.js'
 
-const errorHandler = (err, req, res, next) => {
+const errorHandler = (err, req, res) => {
   const clientIP = req?.ip || req?.connection?.remoteAddress || 'unknown'
   const method = req?.method || 'unknown'
   const url = req?.url || 'unknown'

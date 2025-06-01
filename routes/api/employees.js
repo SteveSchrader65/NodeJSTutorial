@@ -5,14 +5,15 @@ import { verifyRoles } from '../../middleware/verifyRoles.js'
 
 const empRouter = express.Router()
 
-empRouter.route('/')
-  .get(getAllEmployees)
-  .post(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor), addNewEmployee)
+empRouter
+	.route('/')
+	.get(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor), getAllEmployees)
+	.post(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor), addNewEmployee)
 
 empRouter
 	.route('/:id')
-	.get(getEmployeeByID)
-	.put(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor), updateEmployee)
+	.get(verifyRoles(ROLES_LIST.Admin, ROLES_LIST.Editor), getEmployeeByID)
+	.put(verifyRoles(ROLES_LIST.Admin), updateEmployee)
 	.delete(verifyRoles(ROLES_LIST.Admin), deleteEmployee)
 
 export { empRouter }

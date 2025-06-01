@@ -12,7 +12,7 @@ const handleRefresh = async (req, res) => {
 
 	const userMatch = users.find(person => person.refreshToken === refreshToken)
 
-  if (!userMatch) return res.sendStatus(403) // Forbidden code
+  if (!userMatch) return res.sendStatus(403)
 
   dotenv.config()
 
