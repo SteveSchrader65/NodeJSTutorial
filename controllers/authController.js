@@ -2,7 +2,6 @@ import path from 'path'
 import { promises as fsPromises } from 'fs'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
 import { logEvents } from '../middleware/logEvents.js'
 import { readUserDataFile } from '../database/readDatafile.js'
 
@@ -26,10 +25,7 @@ const handleLogin = async (req, res) => {
 		const hashMatch = await bcrypt.compare(pwd, userMatch.pwd)
 
 		if (hashMatch) {
-			dotenv.config()
-
       const roles = Object.values(userMatch.roles)
-
 			const accessToken = jwt.sign(
 				{
 					UserInfo: {

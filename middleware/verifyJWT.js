@@ -1,13 +1,10 @@
 import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
 
 const verifyJWT = async (req, res, next) => {
   const authHeader = req.headers.authorization || req.headers.Authorization
   const token = authHeader?.split(' ')[1]
 
   if (!authHeader?.startsWith('Bearer ')) return res.sendStatus(401)
-
-  dotenv.config()
 
   jwt.verify(
     token,

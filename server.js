@@ -13,10 +13,13 @@ import { errorHandler } from './middleware/errorHandler.js'
 import { verifyJWT } from './middleware/verifyJWT.js'
 import { credentials } from './middleware/credentials.js'
 import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
 
 const PORT = process.env.PORT || 3500
 const app = express()
 const __dirname = import.meta.dirname
+
+dotenv.config()
 
 // Custom logger
 app.use(logger)

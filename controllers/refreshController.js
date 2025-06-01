@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-import dotenv from 'dotenv'
 import { readUserDataFile } from '../database/readDatafile.js'
 
 const handleRefresh = async (req, res) => {
@@ -13,8 +12,6 @@ const handleRefresh = async (req, res) => {
 	const userMatch = users.find(person => person.refreshToken === refreshToken)
 
   if (!userMatch) return res.sendStatus(403)
-
-  dotenv.config()
 
 	jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
     if (err || userMatch.user !== decoded.user) return res.sendStatus(403)
