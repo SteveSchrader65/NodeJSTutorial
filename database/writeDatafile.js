@@ -11,7 +11,7 @@ async function writeUserDataFile(data) {
 			JSON.stringify(data, null, 2)
 		)
 	} catch (err) {
-		errorHandler(`Error writing user data: ${err.message}`)
+		errorHandler(err, req, res, `Error writing user data: ${err.message}`)
 	}
 }
 
@@ -22,7 +22,7 @@ async function writeEmpDataFile(data) {
 			JSON.stringify(data, null, 2)
 		)
 	} catch (err) {
-		errorHandler(`Error writing employee data: ${err.message}`)
+		errorHandler(err, `Error writing employee data: ${err.message}`)
 	}
 }
 

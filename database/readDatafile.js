@@ -12,7 +12,7 @@ async function readUserDataFile() {
 
 		return users
 	} catch (err) {
-		errorHandler(`Error reading user data: ${err.message}`)
+		errorHandler(err, req, res, `Error reading user data: ${err.message}`)
 		return []
 	}
 }
@@ -27,7 +27,7 @@ async function readEmpDataFile() {
 
 		return employees
 	} catch (err) {
-		errorHandler(`Error reading employee data: ${err.message}`)
+		errorHandler(err, req, res, `Error reading employee data: ${err.message}`)
 		return []
 	}
 }

@@ -9,7 +9,7 @@ const getAllEmployees = async (req, res) => {
 
 		res.json(employees)
 	} catch (err) {
-		errorHandler(`Error retrieving employee data: ${err.message}`)
+		errorHandler(err, req, res, `Error retrieving employee data: ${err.message}`)
 		res.status(500).json({ success: false, message: 'Server error retrieving employee data' })
 	}
 }
@@ -67,7 +67,7 @@ const updateEmployee = async (req, res) => {
 			data: updated,
 		})
 	} catch (err) {
-		errorHandler(`Error updating employee: ${err.message}`)
+		errorHandler(err, req, res, `Error updating employee: ${err.message}`)
 		res.status(500).json({ success: false, message: 'Server error updating employee' })
 	}
 }
@@ -91,7 +91,7 @@ const deleteEmployee = async (req, res) => {
 			message: `Employee ${employee.firstName} ${employee.lastName} deleted`,
 		})
 	} catch (err) {
-		errorHandler(`Error deleting Employee #${req.params.id}: ${err.message}`)
+		errorHandler(err, req, res, `Error deleting Employee #${req.params.id}: ${err.message}`)
 		res.status(500).json({ success: false, message: 'Server error deleting employee' })
 	}
 }
@@ -109,7 +109,7 @@ const getEmployeeByID = async (req, res) => {
 
 		res.json(employee)
 	} catch (err) {
-		errorHandler(`Error retrieving Employee #${req.params.id}: ${err.message}`)
+		errorHandler(err, req, res, `Error retrieving Employee #${req.params.id}: ${err.message}`)
 		res.status(500).json({ success: false, message: 'Server error retrieving employee' })
 	}
 }

@@ -27,5 +27,3 @@ const verifyJWT = async (req, res, next) => {
 
 export { verifyJWT }
 
-// !! These are all wrong throughout app !!
-// errorHandler(`Error retrieving employee data: ${err.message}`)

@@ -1,5 +1,5 @@
 {
-	"name": "12tut",
+	"name": "13tut",
 	"version": "1.0.0",
 	"description": "NodeJS/ExpressJS tutorial",
 	"main": "server.js",
@@ -19,6 +19,7 @@
 		"dotenv": "^16.5.0",
 		"express": "^5.1.0",
 		"jsonwebtoken": "^9.0.2",
+		"mongoose": "^8.15.1",
 		"uuid": "^11.1.0"
 	},
 	"devDependencies": {

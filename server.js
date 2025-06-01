@@ -1,6 +1,8 @@
 import express from 'express'
 import path from 'path'
 import cors from 'cors'
+import cookieParser from 'cookie-parser'
+import dotenv from 'dotenv'
 import { corsOptions } from './config/corsOptions.js'
 import { logger } from './middleware/logEvents.js'
 import { authRouter } from './routes/auth.js'
@@ -12,14 +14,17 @@ import { logoutRouter } from './routes/logout.js'
 import { errorHandler } from './middleware/errorHandler.js'
 import { verifyJWT } from './middleware/verifyJWT.js'
 import { credentials } from './middleware/credentials.js'
-import cookieParser from 'cookie-parser'
-import dotenv from 'dotenv'
+import mongoose from 'mongoose'
+import { connectDB } from './config/dbConnect.js'
+
+dotenv.config()
 
 const PORT = process.env.PORT || 3500
 const app = express()
 const __dirname = import.meta.dirname
 
-dotenv.config()
+// Connect to database
+// connectDB()
 
 // Custom logger
 app.use(logger)
@@ -59,4 +64,8 @@ app.all(/.*/, (req, res) => {
 app.use(errorHandler)
 
 // Server
+// mongoose.connection.once('open', () => {
+//   app.listen(PORT, () => console.log(`Connected to MongoDB\nServer running on Port: ${PORT}`))
+// })
 app.listen(PORT, () => console.log(`Server running on Port: ${PORT}`))
+
