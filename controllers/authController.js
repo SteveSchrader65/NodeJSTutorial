@@ -1,39 +1,13 @@
 import path from 'path'
 import fs, { promises as fsPromises } from 'fs'
-import { logEvents } from '../middleware/logEvents.js'
-import { errorHandler } from '../middleware/errorHandler.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
+import { logEvents } from '../middleware/logEvents.js'
+import { readUserDataFile } from '../database/readDatafile.js'
 
 // ES modules equivalent of __dirname
 const __dirname = import.meta.dirname
-
-async function readUserDataFile() {
-	try {
-		const userData = await fsPromises.readFile(
-			path.join(__dirname, '..', 'model', 'users.json'),
-			'utf8'
-		)
-		const users = JSON.parse(userData)
-
-		return users
-	} catch (err) {
-		errorHandler(`Error reading user data: ${err.message}`)
-		return []
-	}
-}
-
-async function writeUserDataFile(data) {
-	try {
-		await fsPromises.writeFile(
-			path.join(__dirname, '..', 'model', 'users.json'),
-			JSON.stringify(data, null, 2)
-		)
-	} catch (err) {
-		errorHandler(`Error writing user data: ${err.message}`)
-	}
-}
 
 const handleLogin = async (req, res) => {
 	const users = await readUserDataFile()
@@ -54,8 +28,15 @@ const handleLogin = async (req, res) => {
 		if (hashMatch) {
 			dotenv.config()
 
+      const roles = Object.values(userMatch.roles)
+
 			const accessToken = jwt.sign(
-				{ user: userMatch.user },
+				{
+					UserInfo: {
+						user: userMatch.user,
+						roles: roles,
+					},
+				},
 				process.env.ACCESS_TOKEN_SECRET,
 				{ expiresIn: '30s' }
 			)

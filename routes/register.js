@@ -1,5 +1,5 @@
 import express from 'express'
-import { handleNewUser } from '../controllers/regController.js'
+import { handleNewUser } from '../controllers/registerController.js'
 
 const regRouter = express.Router()
 

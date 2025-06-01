@@ -590,3 +590,14 @@
 20250601	03:17:28	c01972ae-ab7b-4b0b-a06b-6cb858974fc7	Logging: GET	undefined	/logout
 20250601	03:21:16	ba8b6983-8b45-42d2-a1dd-260a32f42e8f	Logging: POST	undefined	/auth
 20250601	03:21:25	26494f46-2df2-4258-a517-ec46ece1f629	Logging: GET	undefined	/logout
+20250601	11:13:35	2653b4b4-f523-435f-883e-be1dfd49c3f7	Logging: GET	undefined	/
+20250601	11:13:36	249ca1cc-523a-4180-afd4-eac148f54847	Logging: GET	undefined	/css/style.css
+20250601	11:13:36	1be639c5-fbbe-4958-b847-7e7c9d47e8a2	Logging: GET	undefined	/favicon.ico
+20250601	11:13:44	3db7d67c-ac6d-44bb-b014-c10f8abac1ee	Logging: GET	undefined	/index
+20250601	11:13:44	2e8d4bc9-48ca-48c6-94fc-9a03989bf7e8	Logging: GET	undefined	/css/style.css
+20250601	11:13:50	8af36492-29a8-4b3c-b768-d99f66d3806a	Logging: GET	undefined	/index.html
+20250601	11:13:50	e85afb56-0796-4dfe-8447-849a63688349	Logging: GET	undefined	/css/style.css
+20250601	11:13:56	e2d8dad3-056e-4e1c-a3aa-5dafaf0d7377	Logging: GET	undefined	/ind.html
+20250601	11:13:56	f0718d85-cb28-42d3-9754-c2c3279a4104	Logging: GET	undefined	/css/style.css
+20250601	11:14:07	7580729c-0438-47ee-9355-d71094ed0254	Logging: GET	undefined	/employees
+20250601	11:14:15	4c784680-014f-46c6-9243-36a6f64e2f74	Logging: GET	undefined	/employees/6

@@ -1,25 +1,6 @@
 import jwt from 'jsonwebtoken'
 import dotenv from 'dotenv'
-import path from 'path'
-import { promises as fsPromises } from 'fs'
-
-const __dirname = import.meta.dirname
-
-dotenv.config()
-
-async function readUserDataFile() {
-	try {
-		const userData = await fsPromises.readFile(
-			path.join(__dirname, '..', 'model', 'users.json'),
-			'utf8'
-		)
-
-		return JSON.parse(userData)
-	} catch (err) {
-		console.error(`Error reading user data: ${err.message}`)
-		return []
-	}
-}
+import { readUserDataFile } from '../database/readDatafile.js'
 
 const handleRefresh = async (req, res) => {
 	const cookies = req.cookies
@@ -29,16 +10,24 @@ const handleRefresh = async (req, res) => {
   const refreshToken = cookies.jwt
   const users = await readUserDataFile()
 
-	const foundUser = users.find(person => person.refreshToken === refreshToken)
+	const userMatch = users.find(person => person.refreshToken === refreshToken)
 
-  if (!foundUser) return res.sendStatus(403) // Forbidden code
+  if (!userMatch) return res.sendStatus(403) // Forbidden code
+
+  dotenv.config()
 
 	jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, decoded) => {
-    if (err || foundUser.user !== decoded.user) return res.sendStatus(403)
+    if (err || userMatch.user !== decoded.user) return res.sendStatus(403)
 
+    const roles = Object.values(userMatch.roles)
     const accessToken = jwt.sign(
-      { user: decoded.user },
-      process.env.ACCESS_TOKEN_SECRET,
+      {
+        'UserInfo': {
+          'user': decoded.user,
+          'roles': roles
+        },
+      },
+        process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: '30s' }
     )
 

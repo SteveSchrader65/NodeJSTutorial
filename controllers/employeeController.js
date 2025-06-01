@@ -1,36 +1,7 @@
-import path from 'path'
-import fs, { promises as fsPromises } from 'fs'
 import { errorHandler } from '../middleware/errorHandler.js'
 import { logEvents } from '../middleware/logEvents.js'
-
-// ES modules equivalent of __dirname
-const __dirname = import.meta.dirname
-
-async function readEmpDataFile() {
-	try {
-		const empData = await fsPromises.readFile(
-			path.join(__dirname, '..', 'model', 'employees.json'),
-			'utf8'
-		)
-		const employees = JSON.parse(empData)
-
-		return employees
-	} catch (err) {
-		errorHandler(`Error reading employee data: ${err.message}`)
-		return []
-	}
-}
-
-async function writeEmpDataFile(data) {
-	try {
-		await fsPromises.writeFile(
-			path.join(__dirname, '..', 'model', 'employees.json'),
-			JSON.stringify(data, null, 2)
-		)
-	} catch (err) {
-		errorHandler(`Error writing employee data: ${err.message}`)
-	}
-}
+import { readEmpDataFile } from '../database/readDatafile.js'
+import { writeEmpDataFile } from '../database/writeDatafile.js'
 
 const getAllEmployees = async (req, res) => {
 	try {

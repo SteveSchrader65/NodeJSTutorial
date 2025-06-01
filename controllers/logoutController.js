@@ -1,32 +1,6 @@
-import path from 'path'
-import { promises as fsPromises } from 'fs'
+import { readUserDataFile } from '../database/readDatafile.js'
+import { writeUserDataFile } from '../database/writeDatafile.js'
 import { logEvents } from '../middleware/logEvents.js'
-
-const __dirname = import.meta.dirname
-
-async function readUserDataFile() {
-	try {
-		const userData = await fsPromises.readFile(
-			path.join(__dirname, '..', 'model', 'users.json'),
-			'utf8'
-		)
-
-		return JSON.parse(userData)
-	} catch (err) {
-		throw new Error(`Error reading user data: ${err.message}`)
-	}
-}
-
-async function writeUserDataFile(data) {
-	try {
-		await fsPromises.writeFile(
-			path.join(__dirname, '..', 'model', 'users.json'),
-			JSON.stringify(data, null, 2)
-		)
-	} catch (err) {
-		throw new Error(`Error writing user data: ${err.message}`)
-	}
-}
 
 // NOTE: Delete access token on client-side
 const handleLogout = async (req, res, next) => {
