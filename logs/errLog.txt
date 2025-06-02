@@ -75,3 +75,3110 @@ ENOENT: no such file or directory, open 'D:\Exercises\data\employees.json'ENOENT
 20250531	11:42:54	fa1d651d-0ff0-4718-8ce1-d26595d7f98b	Logging: ReferenceError: userMatch is not defined
 20250531	11:42:54	0849c355-014f-4f86-ab30-357b53c2e60f	Logging: ReferenceError: userMatch is not defined
 20250531	11:42:54	f6898361-1252-44a4-8dd3-ab3799c90ace	Logging: ReferenceError: userMatch is not defined
+20250602	05:11:04	607be869-0a0e-4150-ac76-6c8ddad1dd91	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:14:18	5a036e5d-8756-4a40-8da6-03d1487ca6db	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:16:56	d3c732a6-bdfe-479a-b7c1-beb4665d341c	Logging: ReferenceError: POST /auth - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:18:53	618f321c-3c4a-44c1-b8c8-f590b62a5bd8	Logging: ReferenceError: POST /auth - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:19:20	d29f37ce-144d-40d0-92e9-5bdb50dbaf9a	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:03	b7fb7f70-7566-4d43-a500-d32bbc200aa3	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:34	6be386a1-6d84-4e4c-b6ab-c3255b03b872	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:35	86e03dd2-2c69-4a2c-a6ec-6c4a1b2097d5	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:36	93d1b2fe-74fc-45a9-b227-eb5e9209bd43	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:37	cac87dcf-8dbf-4581-b542-a9654001f135	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:37	2c417e2f-a233-48c8-90a6-43bc96622ca4	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:38	076b6fa5-5729-458b-ac18-b0b657f7be4e	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:38	22895180-9702-48fc-8b9c-0818433033a8	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:38	7e4f0f7f-c8e5-4429-a65a-cfe1f5707095	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:38	d4af1869-74d3-4d03-bd08-94e3d8b9ef5a	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:39	de80d3e0-4c4b-4cbd-b8bf-a05f76fdedee	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:39	9d85058d-9cd1-4534-a21c-308cc5317f01	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:39	76a7cf9a-d46f-408e-8115-cac89a79f0b8	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:40	d768f2e0-a965-4fa0-8883-fdc61714e6f7	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:40	32dba4ed-509e-44ca-966d-29fb593e9eb9	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	05:20:40	e3cf0fd3-dc83-443a-a5df-2f77b892e4bd	Logging: ReferenceError: POST /register - IP: ::ffff:127.0.0.1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	09:26:08	38a92cb6-9a21-4713-9682-f0b1feab8c44	Logging: ReferenceError: POST /register - IP: ::1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	09:30:37	13c19bec-b0ac-4ca8-a9b0-52417581b963	Logging: ReferenceError: POST /register - IP: ::1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	11:16:11	4f10e625-c451-4be8-b655-ddde54387cac	Logging: TypeError: POST /auth - IP: ::1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	11:16:35	956205f9-2346-4972-909e-ed7aa18f4f38	Logging: TypeError: POST /auth - IP: ::1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	11:24:33	307889c3-8023-488d-81f4-1d5df46fc69a	Logging: TypeError: POST /auth - IP: ::1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	11:24:38	20dfd26d-5601-4d38-94c4-7f2ebf52335b	Logging: TypeError: POST /auth - IP: ::1: function next (err) {
+    let layerError = err === 'route'
+      ? null
+      : err
+
+    // remove added slash
+    if (slashAdded) {
+      req.url = req.url.slice(1)
+      slashAdded = false
+    }
+
+    // restore altered req.url
+    if (removed.length !== 0) {
+      req.baseUrl = parentUrl
+      req.url = protohost + removed + req.url.slice(protohost.length)
+      removed = ''
+    }
+
+    // signal to exit router
+    if (layerError === 'router') {
+      setImmediate(done, null)
+      return
+    }
+
+    // no more matching layers
+    if (idx >= stack.length) {
+      setImmediate(done, layerError)
+      return
+    }
+
+    // max sync stack
+    if (++sync > 100) {
+      return setImmediate(next, err)
+    }
+
+    // get pathname of request
+    const path = getPathname(req)
+
+    if (path == null) {
+      return done(layerError)
+    }
+
+    // find next matching layer
+    let layer
+    let match
+    let route
+
+    while (match !== true && idx < stack.length) {
+      layer = stack[idx++]
+      match = matchLayer(layer, path)
+      route = layer.route
+
+      if (typeof match !== 'boolean') {
+        // hold on to layerError
+        layerError = layerError || match
+      }
+
+      if (match !== true) {
+        continue
+      }
+
+      if (!route) {
+        // process non-route handlers normally
+        continue
+      }
+
+      if (layerError) {
+        // routes do not match with a pending error
+        match = false
+        continue
+      }
+
+      const method = req.method
+      const hasMethod = route._handlesMethod(method)
+
+      // build up automatic options response
+      if (!hasMethod && method === 'OPTIONS' && methods) {
+        methods.push.apply(methods, route._methods())
+      }
+
+      // don't even bother matching route
+      if (!hasMethod && method !== 'HEAD') {
+        match = false
+      }
+    }
+
+    // no match
+    if (match !== true) {
+      return done(layerError)
+    }
+
+    // store route for dispatch on change
+    if (route) {
+      req.route = route
+    }
+
+    // Capture one-time layer values
+    req.params = self.mergeParams
+      ? mergeParams(layer.params, parentParams)
+      : layer.params
+    const layerPath = layer.path
+
+    // this should be done for the layer
+    processParams(self.params, layer, paramcalled, req, res, function (err) {
+      if (err) {
+        next(layerError || err)
+      } else if (route) {
+        layer.handleRequest(req, res, next)
+      } else {
+        trimPrefix(layer, layerError, layerPath, path)
+      }
+
+      sync = 0
+    })
+  }
+20250602	11:29:42	89699e41-b337-4e3d-906b-2d7917f23992	Logging: TypeError: POST /auth - IP: ::1: Cannot destructure property 'user' of 'req.body' as it is undefined.
+20250602	11:36:41	5717309b-1ff2-4f05-a26c-615f82fc9186	Logging: TypeError: POST /auth - IP: ::1: Cannot destructure property 'user' of 'req.body' as it is undefined.

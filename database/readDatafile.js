@@ -2,6 +2,9 @@ import path from 'path'
 import fs, { promises as fsPromises } from 'fs'
 import { errorHandler } from '../middleware/errorHandler.js'
 
+// ES modules equivalent of __dirname
+const __dirname = import.meta.dirname
+
 async function readUserDataFile() {
 	try {
 		const userData = await fsPromises.readFile(

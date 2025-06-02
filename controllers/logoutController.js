@@ -20,9 +20,9 @@ const handleLogout = async (req, res, next) => {
 		const refreshToken = cookies.jwt
 		const users = await readUserDataFile()
 		const userMatch = users.find(person => person.refreshToken === refreshToken)
-    // const isProduction = process.env.NODE_ENV === 'production'
+    const isProduction = process.env.NODE_ENV === 'production' || true
 
-		res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', /*secure: true,*/ /*secure: isProduction*/ })
+		res.clearCookie('jwt', { httpOnly: true, sameSite: 'None', secure: isProduction })
 
 		if (!userMatch) {
 			const failMessage = `Logout attempt with invalid refresh token - IP: ${clientIP}`

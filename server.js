@@ -69,3 +69,8 @@ app.use(errorHandler)
 // })
 app.listen(PORT, () => console.log(`Server running on Port: ${PORT}`))
 
+// Test all endpoints
+// Create Mongo database
+// Add uri to .env
+// Uncomment above lines
+// Continue ...

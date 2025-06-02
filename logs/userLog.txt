@@ -91,3 +91,11 @@
 20250601	03:17:28	a3f51d30-ea5d-4670-b7d2-319767c12bcb	Logging: User 'Steve' logged out successfully - IP: ::ffff:127.0.0.1
 20250601	03:21:16	52f4cc16-a439-48dc-8102-eaa976e1ed72	Logging: User Steve has logged-in
 20250601	03:21:25	dade1f15-1783-41fb-9b23-22616469f6f8	Logging: User Steve logged out successfully
+20250602	10:59:59	d3ec24f3-c83e-4ba9-997b-1c4bf9916749	Logging: New User created: Julius
+20250602	11:38:28	ada985ab-cb91-4d5b-addb-6dd7b6d2c262	Logging: User Julius has logged-in
+20250602	11:52:50	097cd96e-10c6-496b-a622-ff70ff133ef9	Logging: User Julius logged out successfully
+20250602	13:05:34	131b4551-2390-42d3-87c2-7428a8361e06	Logging: New User created: Geoffrey
+20250602	13:13:21	1eeef3f8-2fad-48e0-bde5-f20358e48af0	Logging: User Julius has logged-in
+20250602	13:13:41	8b0bff8e-78e8-4ad1-a5c3-144ebaac4744	Logging: User Julius has logged-in
+20250602	13:15:33	1ac21605-645e-48d6-a20b-740db4aa8995	Logging: User Julius has logged-in
+20250602	13:16:18	8ca9ffe3-273a-4a52-a96c-1e1353d0ccfe	Logging: User Julius has logged-in

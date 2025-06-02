@@ -1,5 +1,43 @@
 [
   {
+    "id": 1,
+    "user": "Steve",
+    "roles": {
+      "Admin": 5150,
+      "Editor": 1984
+    },
+    "pwd": "$2b$10$YaLb6E1UnnL/ZW97ZbYTcu4rZSAjeghDVzedvRetheo.0eawdB3FW",
+    "refreshToken": ""
+  },
+  {
+    "id": 2,
+    "user": "Dave",
+    "roles": {
+      "User": 2001,
+      "Editor": 1984
+    },
+    "pwd": "$2b$10$Q72tC8bJNDCuFUXHiNXKaOm3uIkgOPRFkU6ryickf3P0wApfGxK5i",
+    "refreshToken": ""
+  },
+  {
+    "id": 3,
+    "user": "Mark",
+    "roles": {
+      "User": 2001
+    },
+    "pwd": "$2b$10$CZJLpYx9afITpfx7hLfTlOlwuK1zwNJo55doE7DD/7/kaTmHAqZZu",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiTWFyayIsImlhdCI6MTc0ODcxODM3NywiZXhwIjoxNzQ4ODA0Nzc3fQ._-BqsvobyOxI_Oj0L6ajPyaO-lSa-c-WJ7CxIEh4QEI"
+  },
+  {
+    "id": 4,
+    "user": "Jason",
+    "roles": {
+      "User": 2001
+    },
+    "pwd": "$2b$10$1Fll3XyCfqyteedZ4p0VMOCVZzhXmhr9ucYxOZ0ulQLgxeqfj5An.",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmFzb24iLCJpYXQiOjE3NDg2NjAwNTAsImV4cCI6MTc0ODc0NjQ1MH0.1YgsOdUoHFNUfq54umYOYa_8DvyhUEtg17UzUzpV9o4"
+  },
+  {
     "id": 5,
     "user": "Frank",
     "roles": {
@@ -11,41 +49,20 @@
     "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiRnJhbmsiLCJpYXQiOjE3NDg2NTk0MjYsImV4cCI6MTc0ODc0NTgyNn0.E5sMXzcXO4kCSDf-N2-QkWnehrgiM5CeGeQMJS0Zj3g"
   },
   {
-		"id": 4,
-		"user": "Jason",
-		"roles": {
-			"User": 2001
-		},
-		"pwd": "$2b$10$1Fll3XyCfqyteedZ4p0VMOCVZzhXmhr9ucYxOZ0ulQLgxeqfj5An.",
-		"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSmFzb24iLCJpYXQiOjE3NDg2NjAwNTAsImV4cCI6MTc0ODc0NjQ1MH0.1YgsOdUoHFNUfq54umYOYa_8DvyhUEtg17UzUzpV9o4"
+    "id": 7,
+    "user": "Geoffrey",
+    "roles": {
+      "User": 2001
+    },
+    "pwd": "$2b$10$BQlh8d7CiFg833cqaRL86u.cf8tySs0tQYEBvEzRI7DiyhjOQy6aW"
   },
   {
-		"id": 2,
-		"user": "Dave",
-		"roles": {
-			"User": 2001,
-			"Editor": 1984
-		},
-		"pwd": "$2b$10$Q72tC8bJNDCuFUXHiNXKaOm3uIkgOPRFkU6ryickf3P0wApfGxK5i",
-		"refreshToken": ""
-  },
-  {
-		"id": 3,
-		"user": "Mark",
-		"roles": {
-			"User": 2001
-		},
-		"pwd": "$2b$10$CZJLpYx9afITpfx7hLfTlOlwuK1zwNJo55doE7DD/7/kaTmHAqZZu",
-		"refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiTWFyayIsImlhdCI6MTc0ODcxODM3NywiZXhwIjoxNzQ4ODA0Nzc3fQ._-BqsvobyOxI_Oj0L6ajPyaO-lSa-c-WJ7CxIEh4QEI"
-  },
-  {
-		"id": 1,
-		"user": "Steve",
-		"roles": {
-			"Admin": 5150,
-      "Editor": 1984
-		},
-		"pwd": "$2b$10$YaLb6E1UnnL/ZW97ZbYTcu4rZSAjeghDVzedvRetheo.0eawdB3FW",
-		"refreshToken": ""
+    "id": 6,
+    "user": "Julius",
+    "roles": {
+      "User": 2001
+    },
+    "pwd": "$2b$10$ytQphllGUDInSfgJ/Vt5Ue.NKMudoQK17CRtLRRkpqD/hGaoQUmI6",
+    "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiSnVsaXVzIiwiaWF0IjoxNzQ4ODQxMzc4LCJleHAiOjE3NDg5Mjc3Nzh9.-943xwIS0WWJbJ1BHBj-n_i-xZFIeCvt5nFt-KK96zQ"
   }
 ]
